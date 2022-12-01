@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">tuseats</string>
+    <string name="title_placeholder">Title</string>
+    <string name="news_placeholder">News</string>
+    <string name="sports_info_placeholder">Here is some news</string>
+    <string name="subtitle_detail_text">Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Praesent ultrices congue rutrum.
+        Phasellus elementum ipsum ac convallis aliquam. Suspendisse eleifend
+        eros a enim faucibus mollis. Nunc placerat, est vitae vestibulum
+        blandit, dolor diam fringilla tellus, eu euismod mauris neque
+        at neque.</string>
+    <string name="view_info">View Information</string>
+    <string name="view_cart">View Cart</string>
+    <string name="tmp_title">tmp_title</string>
+    <string name="settings">Settings</string>
+    <array name="food_section_images">
+        <item>@drawable/img_baseball</item>
+        <item>@drawable/img_badminton</item>
+    </array>
 </resources>
