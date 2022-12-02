@@ -1,9 +1,11 @@
 package com.example.tuseats.ViewHolder;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +20,12 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     private TextView foodName;
     private TextView foodDescription;
     private TextView foodPrice;
+
     private Button btn_add_to_cart;
+
     private Food food;
     private ClickListener clickListener;
+    private EditText quantity;
 
     private FoodViewHolder(View itemView, ClickListener clickListener) {
         super(itemView);
@@ -28,15 +33,18 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         foodName = itemView.findViewById(R.id.foodName);
         foodDescription = itemView.findViewById(R.id.foodDescription);
         foodPrice = itemView.findViewById(R.id.foodPrice);
+
+        // buttons
         btn_add_to_cart = itemView.findViewById(R.id.btn_add_to_cart);
 
-        // Set the OnClickListener to the entire view.
+        // Set the OnClickListener to the view.
         btn_add_to_cart.setOnClickListener(this);
+
         this.clickListener = clickListener;
+        quantity = itemView.findViewById(R.id.quantity);
     }
 
     public void bind(Food food) {
-
         foodName.setText(food.getName());
         foodDescription.setText(food.getDescription());
         foodPrice.setText(food.getPrice().toString());
@@ -59,8 +67,13 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_add_to_cart:
-                CartItem cartItem = new CartItem(this.food, 1);
-                clickListener.addToCart(this.getLayoutPosition(), cartItem);
+                String quantityStr = quantity.getText().toString().trim();
+                if (TextUtils.isEmpty(quantityStr)) {
+                    quantity.setError("Please don't leave quantity blank!");
+                } else {
+                    CartItem cartItem = new CartItem(this.food, Integer.parseInt(quantityStr));
+                    clickListener.addToCart(this.getLayoutPosition(), cartItem);
+                }
                 break;
             default:
                 break;

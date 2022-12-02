@@ -1,0 +1,10 @@
+
+‹
+java:S1319["pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¢©õ¸ÿÿÿÿÿ
+k	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—¨ê´þÿÿÿÿ
+z
+java:S1450"dRemove the "mFoodSectionViewModel" field and declare it as a local variable in the relevant methods.(¥àáª
+G
+java:S1602#",Remove useless curly braces around statement(‘é»›ýÿÿÿÿ
+P	java:S125."<This block of commented-out lines of code should be removed.(þò— 
+P	java:S125J"<This block of commented-out lines of code should be removed.(þò— 

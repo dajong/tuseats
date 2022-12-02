@@ -4,58 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--    <RelativeLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginVertical="10dp"-->
-    <!--            android:orientation="horizontal">-->
-
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginStart="16dp"-->
-    <!--                android:orientation="vertical">-->
-
-    <TextView
-        android:id="@+id/cart_food_name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test_name"
-        android:textSize="26sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="16dp">
 
-    <!--                <Button-->
-    <!--                    android:id="@+id/btn_remove_from_cart"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    style="?android:attr/buttonStyleSmall"-->
-    <!--                    android:backgroundTint="@color/color_secondary"-->
-    <!--                    android:onClick="removeFromCart"-->
-    <!--                    android:text="Remove" />-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
 
-    <!--            </LinearLayout>-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
 
-    <!--            <TextView-->
-    <!--                android:id="@+id/quantity"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content" />-->
+                <TextView
+                    android:id="@+id/cart_food_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="test_name"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
 
-    <!--</LinearLayout>-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/totalPrice"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_alignParentRight="true"-->
-    <!--            android:layout_marginTop="5dp"-->
-    <!--            android:padding="15dp"-->
-    <!--            android:text="test_price" />-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
 
-    <!--    </RelativeLayout>-->
+                    <Button
+                        android:id="@+id/btn_remove_from_cart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/buttonStyleSmall"
+                        android:background="@color/color_secondary"
+                        android:onClick="removeFromCart"
+                        android:text="Remove" />
+
+
+                    <TextView
+                        android:id="@+id/cart_item_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/tmp_title" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:padding="15dp"
+            android:text="test_price" />
+
+
+    </RelativeLayout>
 </LinearLayout>
