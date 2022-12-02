@@ -4,34 +4,36 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/foodSectionImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            android:layout_gravity="center" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/foodSectionTitle"
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:layout_alignBottom="@id/foodSectionImage"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:layout_below="@id/foodSectionImage"
             android:text="@string/title_placeholder" />
 
         <TextView
-            android:id="@+id/subTitle"
+            android:id="@+id/foodSectionDescription"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/foodSectionImage"
+            android:layout_below="@id/foodSectionTitle"
             android:padding="8dp"
             android:text="@string/sports_info_placeholder" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

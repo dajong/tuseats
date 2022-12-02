@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.tuseats.FoodList;
 import com.example.tuseats.R;
 import com.example.tuseats.model.FoodSection;
@@ -26,8 +27,8 @@ public class FoodSectionViewHolder extends RecyclerView.ViewHolder implements Vi
 
     private FoodSectionViewHolder(View itemView) {
         super(itemView);
-        foodSectionItemView = itemView.findViewById(R.id.title);
-        foodSectionDescription = itemView.findViewById(R.id.subTitle);
+        foodSectionItemView = itemView.findViewById(R.id.foodSectionTitle);
+        foodSectionDescription = itemView.findViewById(R.id.foodSectionDescription);
         foodSectionImage = itemView.findViewById(R.id.foodSectionImage);
         mContext = itemView.getContext();
         // Set the OnClickListener to the entire view.
@@ -41,8 +42,7 @@ public class FoodSectionViewHolder extends RecyclerView.ViewHolder implements Vi
         foodSectionDescription.setText(foodSection.getShortDescription());
 
         // Load the images into the ImageView using the Glide library.
-//        Glide.with(mContext).load(
-//                foodSection.getFoodSectionImage()).into(foodSectionImage);
+        Glide.with(mContext).load(imageIDs.get(foodSection.getImageID() - 1)).into(foodSectionImage);
 
         this.foodSectionList = foodSectionList;
         this.imageIDs = imageIDs;
@@ -60,8 +60,6 @@ public class FoodSectionViewHolder extends RecyclerView.ViewHolder implements Vi
         FoodSection curFoodSection = foodSectionList.get(getAdapterPosition());
         Intent detailIntent = new Intent(mContext, FoodList.class);
         detailIntent.putExtra("title", curFoodSection.getFoodSectionName());
-//        detailIntent.putExtra("image_resource",
-//                curFoodSection.getFoodSectionImage());
         mContext.startActivity(detailIntent);
     }
 }

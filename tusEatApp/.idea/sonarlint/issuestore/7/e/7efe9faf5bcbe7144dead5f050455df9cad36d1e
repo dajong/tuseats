@@ -1,0 +1,6 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿ¤Ë—úÿÿÿÿ
+m
+java:S1450"WRemove the "imageIDs" field and declare it as a local variable in the relevant methods.(çÇî¬
+B
+java:S1068",Remove this unused "imageIDs" private field.(çÇî¬

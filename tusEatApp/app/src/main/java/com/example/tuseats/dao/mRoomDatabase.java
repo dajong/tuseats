@@ -58,16 +58,25 @@ public abstract class mRoomDatabase extends RoomDatabase {
                 //Food
                 Food food = new Food("Special Curry", 6.99, "Best curry in Limerick! Cooked with various spices, vegetables, prawns, chicken and beef", "Main Course");
                 dao.insert(food);
+
                 food = new Food("Poo", 102.50, "Poo I made this morning in my toilet", "Main Course");
                 dao.insert(food);
 
+                food = new Food("Coke", 1.50, "Coca-Cola is a carbonated, sweetened soft drink ", "Drinks");
+                dao.insert(food);
+
+                food = new Food("Chips", 3.0, "Crunchy potato which is one of the people's favorite", "Side");
+                dao.insert(food);
+
                 // Food Section
-                FoodSection foodSection = new FoodSection("Main Course", "Cheap, fulfilling and most importantly, tasty!");
+                FoodSection foodSection = new FoodSection("Main Course", "Cheap, fulfilling and most importantly, tasty!", 1);
                 foodSectionDao.insert(foodSection);
 
-                foodSection = new FoodSection("Side", "Some of the best you want with your main!");
+                foodSection = new FoodSection("Side", "Some of the best you want with your main!", 2);
                 foodSectionDao.insert(foodSection);
 
+                foodSection = new FoodSection("Drinks", "Satisfied your thirst alongside with your food", 3);
+                foodSectionDao.insert(foodSection);
             });
         }
     };
