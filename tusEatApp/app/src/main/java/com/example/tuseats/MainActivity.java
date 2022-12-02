@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         TypedArray foodSectionsImageResources =
                 getResources().obtainTypedArray(R.array.food_section_images);
 
-        for (int i = 0; i < foodSectionsImageResources.length(); i++) {
+        for (int i = 0; i < 2; i++) {
             list.add(foodSectionsImageResources.getResourceId(i, 0));
         }
 

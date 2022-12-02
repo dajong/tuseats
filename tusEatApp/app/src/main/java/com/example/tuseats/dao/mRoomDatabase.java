@@ -61,11 +61,12 @@ public abstract class mRoomDatabase extends RoomDatabase {
                 food = new Food("Poo", 102.50, "Poo I made this morning in my toilet", "Main Course");
                 dao.insert(food);
 
+                int count = 0;
                 // Food Section
-                FoodSection foodSection = new FoodSection("Main Course", "Cheap, fulfilling and most importantly, tasty!");
+                FoodSection foodSection = new FoodSection("Main Course", "Cheap, fulfilling and most importantly, tasty!", 1);
                 foodSectionDao.insert(foodSection);
 
-                foodSection = new FoodSection("Side", "Some of the best you want with your main!");
+                foodSection = new FoodSection("Side", "Some of the best you want with your main!", 2);
                 foodSectionDao.insert(foodSection);
 
             });
