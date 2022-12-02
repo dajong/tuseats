@@ -14,7 +14,11 @@
     <string name="tmp_title">tmp_title</string>
     <string name="settings">Settings</string>
     <array name="food_section_images">
-        <item>@drawable/img_baseball</item>
-        <item>@drawable/img_badminton</item>
+        <!--        Photo by Valeria Boltneva: https://www.pexels.com/photo/hamburger-with-egg-and-vegetable-1251198/-->
+        <item>@drawable/img_burger</item>
+        <!--        Photo by Dzenina Lukac: https://www.pexels.com/photo/fried-potatoes-1583884/-->
+        <item>@drawable/img_chips</item>
+        <!--        Photo by Karolina Grabowska: https://www.pexels.com/photo/set-of-identical-bottles-of-coke-on-white-surface-4397806/-->
+        <item>@drawable/img_drinks</item>
     </array>
 </resources>
