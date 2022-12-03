@@ -25,7 +25,7 @@ public class FoodViewModel extends AndroidViewModel {
         return mRepository.getAllFoodsBySection(foodSection);
     }
 
-    public void insert(Food word) {
-        mRepository.insert(word);
+    public void insert(Food food) {
+        mRepository.insert(food);
     }
 }

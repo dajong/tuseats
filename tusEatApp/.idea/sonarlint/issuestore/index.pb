@@ -1,12 +1,8 @@
 
 f
 6app/src/main/java/com/example/tuseats/model/Order.java,c/5/c59496bbab1a34cb8c05b21aff5e8ec1e8376b83
-r
-Bapp/src/main/java/com/example/tuseats/viewModel/FoodViewModel.java,c/4/c407b7a69aabab5c682d4a4398d0429a1840ed72
 t
 Dapp/src/main/java/com/example/tuseats/repository/FoodRepository.java,e/4/e46d0b75d6959dc71df0f3803efae1c4cffee1c0
-c
-3app/src/main/java/com/example/tuseats/Checkout.java,f/a/faee4984e72f6c2d0808297451d9d4620603822f
 g
 7app/src/main/java/com/example/tuseats/MapsFragment.java,7/7/77d6a495990bfe1cb0a7f1df840ae4ec1dcef5c1
 <
@@ -31,22 +27,16 @@ i
 9app/src/main/java/com/example/tuseats/model/CartItem.java,0/6/06e0c2fd9bb1b098281de57e28a21cb142c57876
 d
 4app/src/main/java/com/example/tuseats/DataStore.java,f/7/f7ffbda477b7e9cf4365a9e3944ad84b18e9e90f
-c
-3app/src/main/java/com/example/tuseats/FoodList.java,1/3/13182f46d11d8a1958be68671d289c2514746391
 r
 Bapp/src/main/java/com/example/tuseats/viewModel/CartViewModel.java,3/5/352e403b1cbdbbfc31d4112f45c6fbcd692124ae
 r
 Bapp/src/main/java/com/example/tuseats/Adapter/CartListAdapter.java,4/1/41bbff2cddd3363676e8c9c10bf7640d4c14c2cf
-_
-/app/src/main/java/com/example/tuseats/Cart.java,8/1/81fb459c8492c6d81d732a6092715dd11efc623f
 {
 Kapp/src/main/java/com/example/tuseats/ViewHolder/FoodSectionViewHolder.java,7/e/7efe9faf5bcbe7144dead5f050455df9cad36d1e
 m
 =app/src/main/java/com/example/tuseats/dao/FoodSectionDao.java,6/b/6bea96c7fb53909e1b93bb9878a4d917ddf13d7b
 l
 <app/src/main/java/com/example/tuseats/dao/mRoomDatabase.java,1/3/13a9ded6c5f9cab4373d8743121026d0f3be5503
-g
-7app/src/main/java/com/example/tuseats/MainActivity.java,a/8/a8cb0cb00206a535a5b0f102190a4efa3ab5d360
 r
 Bapp/src/main/java/com/example/tuseats/Adapter/FoodListAdapter.java,0/9/093dfe62326397a4585e46e577ce903f4db53944
 y
