@@ -1,6 +1,4 @@
 
-f
-6app/src/main/java/com/example/tuseats/model/Order.java,c/5/c59496bbab1a34cb8c05b21aff5e8ec1e8376b83
 t
 Dapp/src/main/java/com/example/tuseats/repository/FoodRepository.java,e/4/e46d0b75d6959dc71df0f3803efae1c4cffee1c0
 g
@@ -13,12 +11,8 @@ P
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 _
 /app/src/main/java/com/example/tuseats/Info.java,f/6/f6b22a6ad3acf3bc5501cf897a1b96ebd0640eab
-{
-Kapp/src/main/java/com/example/tuseats/repository/FoodSectionRepository.java,6/1/61972f2a9527a6b8dc1881b3ce89dc27d4698e97
 f
 6app/src/main/java/com/example/tuseats/dao/FoodDao.java,b/d/bd289e474dc5f2f994f1744eb2f55b27e03c098a
-l
-<app/src/main/java/com/example/tuseats/model/FoodSection.java,f/7/f710d6ed327ea1af267d4052a9429d09edde21a9
 e
 5app/src/main/java/com/example/tuseats/model/Food.java,3/c/3cc938c0d5a289c7e49ff9a701a7335fc013a5ae
 y
@@ -28,15 +22,9 @@ i
 d
 4app/src/main/java/com/example/tuseats/DataStore.java,f/7/f7ffbda477b7e9cf4365a9e3944ad84b18e9e90f
 r
-Bapp/src/main/java/com/example/tuseats/viewModel/CartViewModel.java,3/5/352e403b1cbdbbfc31d4112f45c6fbcd692124ae
-r
 Bapp/src/main/java/com/example/tuseats/Adapter/CartListAdapter.java,4/1/41bbff2cddd3363676e8c9c10bf7640d4c14c2cf
 {
 Kapp/src/main/java/com/example/tuseats/ViewHolder/FoodSectionViewHolder.java,7/e/7efe9faf5bcbe7144dead5f050455df9cad36d1e
-m
-=app/src/main/java/com/example/tuseats/dao/FoodSectionDao.java,6/b/6bea96c7fb53909e1b93bb9878a4d917ddf13d7b
-l
-<app/src/main/java/com/example/tuseats/dao/mRoomDatabase.java,1/3/13a9ded6c5f9cab4373d8743121026d0f3be5503
 r
 Bapp/src/main/java/com/example/tuseats/Adapter/FoodListAdapter.java,0/9/093dfe62326397a4585e46e577ce903f4db53944
 y

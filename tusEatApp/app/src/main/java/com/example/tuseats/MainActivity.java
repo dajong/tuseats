@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(foodSections);
         });
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_baseline_food_bank_24);
     }
 
     @Override
