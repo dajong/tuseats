@@ -25,9 +25,5 @@ r
 Bapp/src/main/java/com/example/tuseats/Adapter/CartListAdapter.java,4/1/41bbff2cddd3363676e8c9c10bf7640d4c14c2cf
 {
 Kapp/src/main/java/com/example/tuseats/ViewHolder/FoodSectionViewHolder.java,7/e/7efe9faf5bcbe7144dead5f050455df9cad36d1e
-r
-Bapp/src/main/java/com/example/tuseats/Adapter/FoodListAdapter.java,0/9/093dfe62326397a4585e46e577ce903f4db53944
-y
-Iapp/src/main/java/com/example/tuseats/Adapter/FoodSectionListAdapter.java,e/2/e232d5d7dda06df83248fc3ed69e8e15f97a892c
 n
 >app/src/main/java/com/example/tuseats/utils/ClickListener.java,2/3/233c67f1a0abd60df0d0e6a42c904860ef712c76
