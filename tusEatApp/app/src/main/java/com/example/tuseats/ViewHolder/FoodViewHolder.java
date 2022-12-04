@@ -60,7 +60,16 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
             @Override
             public void addToCart(int p, CartItem cartItem) {
                 DataStore ds = DataStore.getCart();
-                ds.cart.add(cartItem);
+                boolean itemAdded = false;
+                for (CartItem cartitem : ds.cart) {
+                    if (cartitem.getFood().getName().equals(cartItem.getFood().getName())) {
+                        cartitem.setQuantity(cartitem.getQuantity() + cartItem.getQuantity());
+                        itemAdded = true;
+                    }
+                }
+                if (itemAdded == false) {
+                    ds.cart.add(cartItem);
+                }
             }
         });
     }

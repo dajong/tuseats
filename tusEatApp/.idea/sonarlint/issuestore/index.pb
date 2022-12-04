@@ -11,13 +11,9 @@ f
 6app/src/main/java/com/example/tuseats/dao/FoodDao.java,b/d/bd289e474dc5f2f994f1744eb2f55b27e03c098a
 y
 Iapp/src/main/java/com/example/tuseats/viewModel/FoodSectionViewModel.java,9/a/9a5b8d689f5d41bef62518f32a05b74fee37eeea
-i
-9app/src/main/java/com/example/tuseats/model/CartItem.java,0/6/06e0c2fd9bb1b098281de57e28a21cb142c57876
 d
 4app/src/main/java/com/example/tuseats/DataStore.java,f/7/f7ffbda477b7e9cf4365a9e3944ad84b18e9e90f
 r
 Bapp/src/main/java/com/example/tuseats/Adapter/CartListAdapter.java,4/1/41bbff2cddd3363676e8c9c10bf7640d4c14c2cf
 {
 Kapp/src/main/java/com/example/tuseats/ViewHolder/FoodSectionViewHolder.java,7/e/7efe9faf5bcbe7144dead5f050455df9cad36d1e
-n
->app/src/main/java/com/example/tuseats/utils/ClickListener.java,2/3/233c67f1a0abd60df0d0e6a42c904860ef712c76

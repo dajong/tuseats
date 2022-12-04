@@ -1,15 +1,16 @@
 package com.example.tuseats;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +29,6 @@ public class Checkout extends AppCompatActivity {
     private Spinner month;
     private Spinner year;
     private TextView totalPrice;
-    private Button complete_payment_button;
     private EditText card_number;
 
     @Override
@@ -39,7 +39,6 @@ public class Checkout extends AppCompatActivity {
         month = findViewById(R.id.month_spinner);
         year = findViewById(R.id.year_spinner);
         totalPrice = findViewById(R.id.checkout_total_price);
-        complete_payment_button = findViewById(R.id.complete_payment_button);
         card_number = findViewById(R.id.card_number);
 
         String[] months = new String[]{"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
@@ -132,20 +131,27 @@ public class Checkout extends AppCompatActivity {
         List<Food> foodOrdered = new ArrayList<>();
         Intent intent = new Intent(Checkout.this, MainActivity.class);
 
-        for (CartItem item : DataStore.getCart().cart) {
-            totalPriceOrdered += item.getFood().getPrice() * item.getQuantity();
-            foodOrdered.add(item.getFood());
+        if (month != null && month.getSelectedItem() != null && year != null && year.getSelectedItem() != null) {
+            for (CartItem item : DataStore.getCart().cart) {
+                totalPriceOrdered += item.getFood().getPrice() * item.getQuantity();
+                foodOrdered.add(item.getFood());
+            }
+            DataStore.getCart().cart.clear();
+            Date c = Calendar.getInstance().getTime();
+
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+            String formattedDate = df.format(c);
+
+            Order newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered);
+
+            intent.putExtra("order", newOrder);
+            startActivity(intent);
+        } else {
+            // A toast to confirm item added to cart
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Error occurred", Toast.LENGTH_SHORT).show();
         }
-        DataStore.getCart().cart.clear();
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
 
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-        String formattedDate = df.format(c);
-
-        Order newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered);
-
-        intent.putExtra("order", newOrder);
-        startActivity(intent);
     }
 }
