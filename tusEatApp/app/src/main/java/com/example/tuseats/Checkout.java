@@ -1,5 +1,6 @@
 package com.example.tuseats;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +14,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tuseats.model.CartItem;
+import com.example.tuseats.model.Food;
+import com.example.tuseats.model.Order;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class Checkout extends AppCompatActivity {
     private Spinner month;
@@ -109,7 +119,6 @@ public class Checkout extends AppCompatActivity {
                 return digits;
             }
         });
-
         Double totPrice = 0.0;
         for (CartItem item : DataStore.getCart().cart) {
             totPrice += item.getFood().getPrice() * item.getQuantity();
@@ -119,6 +128,24 @@ public class Checkout extends AppCompatActivity {
     }
 
     public void completePayment(View view) {
-        
+        Double totalPriceOrdered = 0.0;
+        List<Food> foodOrdered = new ArrayList<>();
+        Intent intent = new Intent(Checkout.this, MainActivity.class);
+
+        for (CartItem item : DataStore.getCart().cart) {
+            totalPriceOrdered += item.getFood().getPrice() * item.getQuantity();
+            foodOrdered.add(item.getFood());
+        }
+        DataStore.getCart().cart.clear();
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+
+        Order newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered);
+
+        intent.putExtra("order", newOrder);
+        startActivity(intent);
     }
 }

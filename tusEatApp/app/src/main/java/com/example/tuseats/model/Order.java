@@ -4,13 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity(tableName = "order_table")
-public class Order {
-    public Order(@NonNull Integer orderId, @NonNull Date dateOrdered, @NonNull Double totalPrice, @NonNull List<Food> foodOrdered) {
+public class Order implements Serializable {
+    public Order(@NonNull Integer orderId, @NonNull String dateOrdered, @NonNull Double totalPrice, @NonNull List<Food> foodOrdered) {
         this.orderId = orderId;
         this.dateOrdered = dateOrdered;
         this.totalPrice = totalPrice;
@@ -27,11 +28,11 @@ public class Order {
     }
 
     @NonNull
-    public Date getDateOrdered() {
+    public String getDateOrdered() {
         return dateOrdered;
     }
 
-    public void setDateOrdered(@NonNull Date dateOrdered) {
+    public void setDateOrdered(@NonNull String dateOrdered) {
         this.dateOrdered = dateOrdered;
     }
 
@@ -60,12 +61,13 @@ public class Order {
 
     @NonNull
     @ColumnInfo(name = "order_date")
-    private Date dateOrdered;
+    private String dateOrdered;
 
     @NonNull
     @ColumnInfo(name = "order_price")
     private Double totalPrice;
 
+    @TypeConverters(DataConverter.class)
     @NonNull
     @ColumnInfo(name = "order_food")
     private List<Food> foodOrdered;

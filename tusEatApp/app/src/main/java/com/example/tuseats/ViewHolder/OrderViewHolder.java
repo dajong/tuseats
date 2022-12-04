@@ -22,7 +22,7 @@ public class OrderViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Order order) {
-        dateOrdered.setText(order.getDateOrdered().toString());
+        dateOrdered.setText(order.getDateOrdered());
         totalPriceOrdered.setText("€" + order.getTotalPrice());
     }
 

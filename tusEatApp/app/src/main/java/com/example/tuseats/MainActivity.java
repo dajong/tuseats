@@ -13,19 +13,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.FoodSectionListAdapter;
+import com.example.tuseats.model.Order;
 import com.example.tuseats.viewModel.FoodSectionViewModel;
+import com.example.tuseats.viewModel.OrderViewModel;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private FoodSectionViewModel mFoodSectionViewModel;
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+    private OrderViewModel mOrderViewModel;
     ArrayList<Integer> imageIDs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent orderIntent = getIntent();
+        Order newOrder = (Order) orderIntent.getSerializableExtra("order");
+        if (newOrder != null) {
+            mOrderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+            mOrderViewModel.insert(newOrder);
+        }
+
+
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         imageIDs = fetchDrawables();
         final FoodSectionListAdapter adapter = new FoodSectionListAdapter(new FoodSectionListAdapter.FoodSectionDiff(), imageIDs);
@@ -85,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
 //                // Recreate the activity for the theme change to take effect.
 //                recreate();
 //                return true;
+            case R.id.menu_history:
+                Intent intent_order_history = new Intent(MainActivity.this, OrderHistoryList.class);
+                startActivity(intent_order_history);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
