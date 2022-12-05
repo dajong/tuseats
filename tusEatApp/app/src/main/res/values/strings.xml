@@ -12,7 +12,7 @@
     <string name="view_info">View Information</string>
     <string name="view_cart">View Cart</string>
     <string name="tmp_title">tmp_title</string>
-    <string name="settings">Settings</string>
+    <string name="view_history">View Order History</string>
     <array name="food_section_images">
         <!--        Photo by Valeria Boltneva: https://www.pexels.com/photo/hamburger-with-egg-and-vegetable-1251198/-->
         <item>@drawable/img_burger</item>
@@ -21,4 +21,6 @@
         <!--        Photo by Karolina Grabowska: https://www.pexels.com/photo/set-of-identical-bottles-of-coke-on-white-surface-4397806/-->
         <item>@drawable/img_drinks</item>
     </array>
+
+
 </resources>

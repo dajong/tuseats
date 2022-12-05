@@ -51,16 +51,18 @@
                         android:id="@+id/quantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:hint="0"
                         android:layout_marginRight="5dp"
                         android:inputType="number" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_add_to_cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Widget.MaterialComponents.Button"
                         android:backgroundTint="@color/color_secondary"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/white"
                         android:layout_alignParentRight="true"
                         android:text="Add to cart" />
                 </LinearLayout>

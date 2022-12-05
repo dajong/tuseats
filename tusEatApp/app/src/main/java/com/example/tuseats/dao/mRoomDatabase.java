@@ -6,19 +6,25 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.tuseats.model.DataConverter;
 import com.example.tuseats.model.Food;
 import com.example.tuseats.model.FoodSection;
+import com.example.tuseats.model.Order;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Food.class, FoodSection.class}, version = 1, exportSchema = false)
+@Database(entities = {Food.class, FoodSection.class, Order.class}, version = 1, exportSchema = false)
+@TypeConverters(DataConverter.class)
 public abstract class mRoomDatabase extends RoomDatabase {
     public abstract FoodDao foodDao();
 
     public abstract FoodSectionDao foodSectionDao();
+
+    public abstract OrderDao orderDao();
 
     private static volatile mRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -49,11 +55,12 @@ public abstract class mRoomDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 FoodDao dao = INSTANCE.foodDao();
+                OrderDao orderDao = INSTANCE.orderDao();
                 FoodSectionDao foodSectionDao = INSTANCE.foodSectionDao();
 
                 foodSectionDao.deleteAll();
                 dao.deleteAll();
-
+                orderDao.deleteAll();
 
                 //Food
                 Food food = new Food("Special Curry", 6.99, "Best curry in Limerick! Cooked with various spices, vegetables, prawns, chicken and beef", "Main Course");

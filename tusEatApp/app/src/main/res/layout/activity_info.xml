@@ -1,13 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Info">
 
-    <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_map_container_view"
+    <TextView
+        android:id="@+id/opening_hours_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.example.tuseats.MapsFragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Opening hours"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opening_hours_title">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Monday"
+                android:padding="3dip"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="9am - 2pm"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Tuesday"
+                android:padding="3dip"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="9am - 2pm"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Wednesday"
+                android:padding="3dip"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="9am - 2pm"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Thursday"
+                android:padding="3dip"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="9am - 2pm"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Friday"
+                android:padding="3dip"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="9am - 2pm"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:padding="3dip" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/canteen_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Office Phone: +353 61 293244"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <TextView
+        android:id="@+id/canteen_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Office Location: Block D"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/canteen_phone" />
+
+    <TextView
+        android:id="@+id/canteen_ext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Ext: 3244"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/canteen_location" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

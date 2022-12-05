@@ -4,9 +4,11 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,7 +60,16 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
             @Override
             public void addToCart(int p, CartItem cartItem) {
                 DataStore ds = DataStore.getCart();
-                ds.cart.add(cartItem);
+                boolean itemAdded = false;
+                for (CartItem cartitem : ds.cart) {
+                    if (cartitem.getFood().getName().equals(cartItem.getFood().getName())) {
+                        cartitem.setQuantity(cartitem.getQuantity() + cartItem.getQuantity());
+                        itemAdded = true;
+                    }
+                }
+                if (itemAdded == false) {
+                    ds.cart.add(cartItem);
+                }
             }
         });
     }
@@ -68,11 +79,17 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         switch (view.getId()) {
             case R.id.btn_add_to_cart:
                 String quantityStr = quantity.getText().toString().trim();
-                if (TextUtils.isEmpty(quantityStr)) {
-                    quantity.setError("Please don't leave quantity blank!");
+                if (TextUtils.isEmpty(quantityStr) || quantityStr.equals("0")) {
+                    quantity.setError("Please enter a valid value!");
                 } else {
                     CartItem cartItem = new CartItem(this.food, Integer.parseInt(quantityStr));
                     clickListener.addToCart(this.getLayoutPosition(), cartItem);
+
+                    // A toast to confirm item added to cart
+                    Toast.makeText(view.getContext(), "Item added to carts", Toast.LENGTH_SHORT).show();
+
+                    InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(view.getContext().INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
                 }
                 break;
             default:

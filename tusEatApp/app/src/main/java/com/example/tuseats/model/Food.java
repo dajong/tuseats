@@ -5,8 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "food_table")
-public class Food {
+public class Food implements Serializable {
     public Food(@NonNull String name, @NonNull Double price, @NonNull String description, @NonNull String foodSection) {
         this.name = name;
         this.price = price;

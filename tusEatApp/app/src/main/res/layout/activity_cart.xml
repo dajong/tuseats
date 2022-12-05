@@ -32,4 +32,36 @@
         app:layout_constraintTop_toBottomOf="@+id/cart_title">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/checkout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Checkout"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="invisible"
+        android:onClick="checkout"
+        android:backgroundTint="@color/color_secondary"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recycler_view" />
+
+    <TextView
+        android:id="@+id/cart_empty_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cart is empty!"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

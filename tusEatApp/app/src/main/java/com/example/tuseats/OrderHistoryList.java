@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,33 +12,27 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tuseats.Adapter.FoodListAdapter;
-import com.example.tuseats.viewModel.FoodViewModel;
+import com.example.tuseats.Adapter.OrderListAdapter;
+import com.example.tuseats.viewModel.OrderViewModel;
 
-public class FoodList extends AppCompatActivity {
-    private FoodViewModel mFoodViewModel;
-    private TextView foodSectionTitle;
+public class OrderHistoryList extends AppCompatActivity {
+    private OrderViewModel mOrderViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_list);
+        setContentView(R.layout.activity_order_history_list);
 
-        //Setting the food section title
-        foodSectionTitle = findViewById(R.id.foodSectionTitle);
-        Intent intent = getIntent();
-        String title = intent.getStringExtra("title");
-        foodSectionTitle.setText(title);
-
-        RecyclerView recyclerView = findViewById(R.id.foodListRecyclerView);
-        final FoodListAdapter adapter = new FoodListAdapter(new FoodListAdapter.FoodDiff());
+        RecyclerView recyclerView = findViewById(R.id.orderListRecyclerView);
+        final OrderListAdapter adapter = new OrderListAdapter(new OrderListAdapter.OrderDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mFoodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        mFoodViewModel.getAllFoodsByFoodSection(title).observe(this, foods -> {
+        mOrderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+        mOrderViewModel.getAllOrders().observe(this, order -> {
             // Update the cached copy of the words in the adapter.
-            adapter.submitList(foods);
+            adapter.submitList(order);
         });
+
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         actionBar.setTitle("TUSeats");
@@ -59,7 +52,7 @@ public class FoodList extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_home:
-                Intent intent_home = new Intent(FoodList.this, MainActivity.class);
+                Intent intent_home = new Intent(OrderHistoryList.this, MainActivity.class);
                 startActivity(intent_home);
                 return true;
             default:
