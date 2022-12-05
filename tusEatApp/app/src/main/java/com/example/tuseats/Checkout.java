@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tuseats.model.CartItem;
@@ -49,6 +53,11 @@ public class Checkout extends AppCompatActivity {
 
         ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, years);
         year.setAdapter(adapter_year);
+
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("TUSeats");
+        getSupportActionBar().setIcon(R.drawable.ic_baseline_food_bank_24);
 
         // Credit card number formatting
         // Code source: https://stackoverflow.com/questions/11790102/format-credit-card-in-edit-text-in-android
@@ -124,6 +133,27 @@ public class Checkout extends AppCompatActivity {
         }
 
         totalPrice.setText("Total Price: €" + totPrice);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.general_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                Intent intent_home = new Intent(Checkout.this, MainActivity.class);
+                startActivity(intent_home);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void completePayment(View view) {

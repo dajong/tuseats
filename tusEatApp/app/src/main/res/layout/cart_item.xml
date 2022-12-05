@@ -35,12 +35,13 @@
                     android:orientation="horizontal">
 
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_remove_from_cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="?android:attr/buttonStyleSmall"
-                        android:background="@color/color_secondary"
+                        android:backgroundTint="@color/design_default_color_error"
+                        android:textColor="@color/white"
                         android:onClick="removeFromCart"
                         android:text="Remove" />
 

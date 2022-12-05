@@ -3,6 +3,8 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
+def core_version = "1.6.0"
+
 android {
     namespace 'com.example.tuseats'
     compileSdk 32
@@ -30,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation "androidx.core:core:$core_version"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
 
@@ -37,7 +40,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     implementation 'com.google.code.gson:gson:2.10'
-    
+
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
 

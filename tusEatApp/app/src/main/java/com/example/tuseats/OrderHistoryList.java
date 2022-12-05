@@ -1,7 +1,12 @@
 package com.example.tuseats;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,5 +32,31 @@ public class OrderHistoryList extends AppCompatActivity {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(order);
         });
+
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("TUSeats");
+        getSupportActionBar().setIcon(R.drawable.ic_baseline_food_bank_24);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.general_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                Intent intent_home = new Intent(OrderHistoryList.this, MainActivity.class);
+                startActivity(intent_home);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

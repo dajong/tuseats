@@ -1,0 +1,8 @@
+
+r	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–µÈ¬øÿÿÿÿ8ÍºµëÍ0
+m
+java:S13015"KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ8ÍºµëÍ0
+{
+java:S1450"^Remove the "mOrderViewModel" field and declare it as a local variable in the relevant methods.(éÌÓú8‘à×äÍ0
+N
+java:S1602",Remove useless curly braces around statement(¬”èøùÿÿÿÿ8½©ÕäÍ0

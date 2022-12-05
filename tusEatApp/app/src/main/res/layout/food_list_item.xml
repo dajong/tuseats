@@ -55,12 +55,13 @@
                         android:layout_marginRight="5dp"
                         android:inputType="number" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_add_to_cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="?android:attr/buttonStyleSmall"
                         android:backgroundTint="@color/color_secondary"
+                        android:textColor="@color/white"
                         android:layout_alignParentRight="true"
                         android:text="Add to cart" />
                 </LinearLayout>

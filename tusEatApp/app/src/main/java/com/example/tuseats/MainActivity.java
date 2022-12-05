@@ -1,13 +1,20 @@
 package com.example.tuseats;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,14 +27,22 @@ import com.example.tuseats.viewModel.OrderViewModel;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int NOTIFICATION_ID = 0;
+    private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
+    private NotificationManager mNotifyManager;
+
     private FoodSectionViewModel mFoodSectionViewModel;
     private OrderViewModel mOrderViewModel;
+    private Button notifyButton;
     ArrayList<Integer> imageIDs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Create the notification channel.
+        createNotificationChannel();
 
         Intent orderIntent = getIntent();
         Order newOrder = (Order) orderIntent.getSerializableExtra("order");
@@ -36,7 +51,13 @@ public class MainActivity extends AppCompatActivity {
             mOrderViewModel.insert(newOrder);
         }
 
-
+        notifyButton = findViewById(R.id.button_notify);
+        notifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendNotification();
+            }
+        });
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         imageIDs = fetchDrawables();
         final FoodSectionListAdapter adapter = new FoodSectionListAdapter(new FoodSectionListAdapter.FoodSectionDiff(), imageIDs);
@@ -47,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(foodSections);
         });
-
+        ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("TUSeats");
         getSupportActionBar().setIcon(R.drawable.ic_baseline_food_bank_24);
     }
 
@@ -57,17 +79,6 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-//        int nightMode = AppCompatDelegate.getDefaultNightMode();
-//        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-//            menu.findItem(R.id.menu_night_mode).setTitle(R.string.day_mode);
-//            menu.findItem(R.id.menu_night_mode).setIcon(R.drawable.ic_light_mode);
-//            menu.findItem(R.id.menu_new_game).setIcon(R.drawable.ic_new_game_dark_mode);
-//        } else {
-//            menu.findItem(R.id.menu_night_mode).setIcon(R.drawable.ic_night_mode);
-//            menu.findItem(R.id.menu_new_game).setIcon(R.drawable.ic_new_game_light_mode);
-//            menu.findItem(R.id.menu_night_mode).setTitle(R.string.night_mode);
-//        }
-        //game_mode = menu.findItem(R.id.menu_single_mode);
         return true;
     }
 
@@ -84,18 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent_cart = new Intent(MainActivity.this, Cart.class);
                 startActivity(intent_cart);
                 return true;
-//            case R.id.menu_night_mode:
-//                int nightMode = AppCompatDelegate.getDefaultNightMode();
-//                if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-//                    AppCompatDelegate.setDefaultNightMode
-//                            (AppCompatDelegate.MODE_NIGHT_NO);
-//                } else {
-//                    AppCompatDelegate.setDefaultNightMode
-//                            (AppCompatDelegate.MODE_NIGHT_YES);
-//                }
-//                // Recreate the activity for the theme change to take effect.
-//                recreate();
-//                return true;
             case R.id.menu_history:
                 Intent intent_order_history = new Intent(MainActivity.this, OrderHistoryList.class);
                 startActivity(intent_order_history);
@@ -119,5 +118,34 @@ public class MainActivity extends AppCompatActivity {
         return list;
     }
 
+    public void createNotificationChannel() {
+        mNotifyManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >=
+                android.os.Build.VERSION_CODES.O) {
+            // Create a NotificationChannel
+            NotificationChannel notificationChannel = new NotificationChannel(PRIMARY_CHANNEL_ID,
+                    "Test Notification", NotificationManager
+                    .IMPORTANCE_DEFAULT);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.CYAN);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notification for testing");
+            mNotifyManager.createNotificationChannel(notificationChannel);
+        }
+    }
 
+    public void sendNotification() {
+        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
+        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+    }
+
+    private NotificationCompat.Builder getNotificationBuilder() {
+        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID).setContentTitle("You've been notified!")
+                .setContentText("This is your notification text.")
+                .setSmallIcon(R.drawable.ic_baseline_food_bank_24);
+        return notifyBuilder;
+
+    }
 }

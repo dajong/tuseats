@@ -1,9 +1,14 @@
 package com.example.tuseats;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -31,7 +36,31 @@ public class Info extends AppCompatActivity implements OnMapReadyCallback {
                 .beginTransaction()
                 .add(R.id.fragment_map_container_view, mapFragment)
                 .commit();
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("TUSeats");
+        getSupportActionBar().setIcon(R.drawable.ic_baseline_food_bank_24);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.general_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                Intent intent_home = new Intent(Info.this, MainActivity.class);
+                startActivity(intent_home);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
