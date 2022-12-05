@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -35,11 +36,12 @@
                     android:orientation="horizontal">
 
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_remove_from_cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Widget.MaterialComponents.Button"
+                        app:cornerRadius="10dp"
                         android:backgroundTint="@color/design_default_color_error"
                         android:textColor="@color/white"
                         android:onClick="removeFromCart"

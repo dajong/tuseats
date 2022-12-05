@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,16 +31,23 @@ public class MainActivity extends AppCompatActivity {
 
     private FoodSectionViewModel mFoodSectionViewModel;
     private OrderViewModel mOrderViewModel;
-    private Button notifyButton;
     ArrayList<Integer> imageIDs = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // Create the notification channel.
         createNotificationChannel();
+
+        // Send a notification when user open the app
+        if (!DataStore.getCart().welcome_notify) {
+            sendNotification();
+            DataStore.getCart().welcome_notify = true;
+        }
 
         Intent orderIntent = getIntent();
         Order newOrder = (Order) orderIntent.getSerializableExtra("order");
@@ -51,13 +56,7 @@ public class MainActivity extends AppCompatActivity {
             mOrderViewModel.insert(newOrder);
         }
 
-        notifyButton = findViewById(R.id.button_notify);
-        notifyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendNotification();
-            }
-        });
+
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         imageIDs = fetchDrawables();
         final FoodSectionListAdapter adapter = new FoodSectionListAdapter(new FoodSectionListAdapter.FoodSectionDiff(), imageIDs);
@@ -68,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(foodSections);
         });
+
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         actionBar.setTitle("TUSeats");
@@ -87,8 +87,13 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_info:
-                Intent intent = new Intent(MainActivity.this, Info.class);
-                startActivity(intent);
+                Intent intent_info = new Intent(MainActivity.this, Info.class);
+                startActivity(intent_info);
+                return true;
+
+            case R.id.menu_maps:
+                Intent intent_maps = new Intent(MainActivity.this, Maps.class);
+                startActivity(intent_maps);
                 return true;
 
             case R.id.menu_cart:
@@ -142,10 +147,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private NotificationCompat.Builder getNotificationBuilder() {
-        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID).setContentTitle("You've been notified!")
-                .setContentText("This is your notification text.")
+        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID).setContentTitle("Welcome to TUSEats")
+                .setContentText("Try out our student favorite Special Curry today!")
                 .setSmallIcon(R.drawable.ic_baseline_food_bank_24);
         return notifyBuilder;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Do nothing to prevent user go back to payment page
+        return;
     }
 }

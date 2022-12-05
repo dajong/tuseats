@@ -29,10 +29,15 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
     implementation "androidx.core:core:$core_version"
+    implementation 'com.balysv:material-ripple:1.0.2' // for ripple effect
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
 

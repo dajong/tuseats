@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,6 +35,11 @@ public class Checkout extends AppCompatActivity {
     private Spinner year;
     private TextView totalPrice;
     private EditText card_number;
+    private EditText card_name;
+    private EditText card_cvc;
+    private EditText card_address;
+    private EditText card_city;
+    private EditText card_postcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,11 @@ public class Checkout extends AppCompatActivity {
         year = findViewById(R.id.year_spinner);
         totalPrice = findViewById(R.id.checkout_total_price);
         card_number = findViewById(R.id.card_number);
+        card_name = findViewById(R.id.card_name);
+        card_cvc = findViewById(R.id.card_cvc);
+        card_address = findViewById(R.id.card_address);
+        card_city = findViewById(R.id.card_city);
+        card_postcode = findViewById(R.id.card_postcode);
 
         String[] months = new String[]{"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         String[] years = new String[]{"YY", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33"};
@@ -161,7 +172,23 @@ public class Checkout extends AppCompatActivity {
         List<Food> foodOrdered = new ArrayList<>();
         Intent intent = new Intent(Checkout.this, MainActivity.class);
 
-        if (month != null && month.getSelectedItem() != null && year != null && year.getSelectedItem() != null) {
+        if (month == null || month.getSelectedItem().toString() == "MM" || year == null || year.getSelectedItem().toString() == "YY") {
+            // A toast for error
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Error occurred", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(card_number.getText())) {
+            card_number.setError("Card Number is required!");
+        } else if (TextUtils.isEmpty(card_name.getText())) {
+            card_name.setError("Name is required!");
+        } else if (TextUtils.isEmpty(card_cvc.getText())) {
+            card_cvc.setError("CVC is required!");
+        } else if (TextUtils.isEmpty(card_address.getText())) {
+            card_address.setError("Address is required!");
+        } else if (TextUtils.isEmpty(card_city.getText())) {
+            card_city.setError("City is required!");
+        } else if (TextUtils.isEmpty(card_postcode.getText())) {
+            card_postcode.setError("Postcode is required!");
+        } else {
             for (CartItem item : DataStore.getCart().cart) {
                 totalPriceOrdered += item.getFood().getPrice() * item.getQuantity();
                 foodOrdered.add(item.getFood());
@@ -177,10 +204,6 @@ public class Checkout extends AppCompatActivity {
 
             intent.putExtra("order", newOrder);
             startActivity(intent);
-        } else {
-            // A toast to confirm item added to cart
-            Context context = getApplicationContext();
-            Toast.makeText(context, "Error occurred", Toast.LENGTH_SHORT).show();
         }
 
     }

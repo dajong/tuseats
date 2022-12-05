@@ -28,42 +28,6 @@
                     android:text="test_name"
                     android:textSize="26sp"
                     android:textStyle="bold" />
-
-                <!--                <TextView-->
-                <!--                    android:id="@+id/foodDescription"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="5dp"-->
-                <!--                    android:text="test_description" />-->
-
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:orientation="horizontal"-->
-                <!--                    android:layout_marginTop="5dp">-->
-
-                <!--                    <TextView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:text="Quantity: " />-->
-
-                <!--                    <EditText-->
-                <!--                        android:id="@+id/quantity"-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:hint="0"-->
-                <!--                        android:layout_marginRight="5dp"-->
-                <!--                        android:inputType="number" />-->
-
-                <!--                    <Button-->
-                <!--                        android:id="@+id/btn_add_to_cart"-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        style="?android:attr/buttonStyleSmall"-->
-                <!--                        android:backgroundTint="@color/color_secondary"-->
-                <!--                        android:layout_alignParentRight="true"-->
-                <!--                        android:text="Add to cart" />-->
-                <!--                </LinearLayout>-->
             </LinearLayout>
 
         </LinearLayout>

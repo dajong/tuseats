@@ -51,8 +51,6 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
         private TextView foodName;
         private TextView totalPrice;
         private TextView cart_item_quantity;
-        private TextView cart_empty_textview;
-        private Button checkout_button;
         private Button btn_remove_from_cart;
 
 
@@ -62,8 +60,6 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
             totalPrice = itemView.findViewById(R.id.totalPrice);
             btn_remove_from_cart = itemView.findViewById(R.id.btn_remove_from_cart);
             cart_item_quantity = itemView.findViewById(R.id.cart_item_quantity);
-            checkout_button = itemView.findViewById(R.id.checkout_button);
-            cart_empty_textview = itemView.findViewById(R.id.cart_empty_textview);
 
             btn_remove_from_cart.setOnClickListener(this);
         }
@@ -79,18 +75,14 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.btn_remove_from_cart) {
-                removeAt(this.getAdapterPosition(), view);
+                removeAt(this.getAdapterPosition());
             }
         }
 
-        public void removeAt(int position, View view) {
+        public void removeAt(int position) {
             DataStore.getCart().cart.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, DataStore.getCart().cart.size());
-            if (DataStore.getCart().cart.isEmpty()) {
-                checkout_button.setVisibility(view.INVISIBLE);
-                cart_empty_textview.setVisibility(view.VISIBLE);
-            }
         }
     }
 }
