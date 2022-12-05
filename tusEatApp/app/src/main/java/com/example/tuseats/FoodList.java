@@ -50,7 +50,7 @@ public class FoodList extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.general_menu, menu);
+        inflater.inflate(R.menu.food_list_menu, menu);
         return true;
     }
 
@@ -61,6 +61,11 @@ public class FoodList extends AppCompatActivity {
             case R.id.menu_home:
                 Intent intent_home = new Intent(FoodList.this, MainActivity.class);
                 startActivity(intent_home);
+                return true;
+
+            case R.id.menu_cart:
+                Intent intent_cart = new Intent(FoodList.this, Cart.class);
+                startActivity(intent_cart);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

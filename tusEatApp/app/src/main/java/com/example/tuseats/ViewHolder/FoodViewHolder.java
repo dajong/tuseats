@@ -49,7 +49,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public void bind(Food food) {
         foodName.setText(food.getName());
         foodDescription.setText(food.getDescription());
-        foodPrice.setText(food.getPrice().toString());
+        foodPrice.setText("€" + food.getPrice());
         this.food = food;
     }
 

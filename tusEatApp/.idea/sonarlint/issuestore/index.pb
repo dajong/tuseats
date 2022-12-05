@@ -39,5 +39,3 @@ e
 5app/src/main/java/com/example/tuseats/model/Food.java,3/c/3cc938c0d5a289c7e49ff9a701a7335fc013a5ae
 g
 7app/src/main/java/com/example/tuseats/dao/OrderDao.java,0/0/008244857cd07a23e192e2e27c97c56009d28f3f
-c
-3app/src/main/java/com/example/tuseats/FoodList.java,1/3/13182f46d11d8a1958be68671d289c2514746391
