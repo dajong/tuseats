@@ -24,8 +24,6 @@ Bapp/src/main/java/com/example/tuseats/viewModel/CartViewModel.java,3/5/352e403
 y
 Iapp/src/main/java/com/example/tuseats/Adapter/FoodSectionListAdapter.java,e/2/e232d5d7dda06df83248fc3ed69e8e15f97a892c
 s
-Capp/src/main/java/com/example/tuseats/Adapter/OrderListAdapter.java,b/2/b2ddb70a47a3719d6d0ad2e3bf6856c24412cc18
-s
 Capp/src/main/java/com/example/tuseats/viewModel/OrderViewModel.java,0/6/06a65cf595ee79883ed4a87b6389b7ca10c125d0
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
@@ -39,13 +37,7 @@ i
 9app/src/main/java/com/example/tuseats/model/CartItem.java,0/6/06e0c2fd9bb1b098281de57e28a21cb142c57876
 e
 5app/src/main/java/com/example/tuseats/model/Food.java,3/c/3cc938c0d5a289c7e49ff9a701a7335fc013a5ae
-u
-Eapp/src/main/java/com/example/tuseats/ViewHolder/OrderViewHolder.java,e/a/ea650eeee0be079400c1ed4e9257d6a510a30776
-l
-<app/src/main/java/com/example/tuseats/dao/mRoomDatabase.java,1/3/13a9ded6c5f9cab4373d8743121026d0f3be5503
 g
 7app/src/main/java/com/example/tuseats/dao/OrderDao.java,0/0/008244857cd07a23e192e2e27c97c56009d28f3f
 c
 3app/src/main/java/com/example/tuseats/FoodList.java,1/3/13182f46d11d8a1958be68671d289c2514746391
-k
-;app/src/main/java/com/example/tuseats/OrderHistoryList.java,a/7/a7f1405ae37db069b97f842d5098c7297b3a72c9

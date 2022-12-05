@@ -55,21 +55,22 @@ public abstract class mRoomDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 FoodDao dao = INSTANCE.foodDao();
-                OrderDao orderDao = INSTANCE.orderDao();
                 FoodSectionDao foodSectionDao = INSTANCE.foodSectionDao();
 
                 foodSectionDao.deleteAll();
                 dao.deleteAll();
-                orderDao.deleteAll();
 
                 //Food
                 Food food = new Food("Special Curry", 6.99, "Best curry in Limerick! Cooked with various spices, vegetables, prawns, chicken and beef", "Main Course");
                 dao.insert(food);
 
-                food = new Food("Poo", 102.50, "Poo I made this morning in my toilet", "Main Course");
+                food = new Food("Home made Lasagne", 8.99, "Home made Lasagne made with Grandma's secret recipe", "Main Course");
                 dao.insert(food);
 
                 food = new Food("Coke", 1.50, "Coca-Cola is a carbonated, sweetened soft drink ", "Drinks");
+                dao.insert(food);
+
+                food = new Food("Fanta", 1.50, "Fanta is a carbonated, sweetened soft drink ", "Drinks");
                 dao.insert(food);
 
                 food = new Food("Chips", 3.0, "Crunchy potato which is one of the people's favorite", "Side");

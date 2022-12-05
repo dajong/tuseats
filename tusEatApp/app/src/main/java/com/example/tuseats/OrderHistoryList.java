@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,11 +19,15 @@ import com.example.tuseats.viewModel.OrderViewModel;
 
 public class OrderHistoryList extends AppCompatActivity {
     private OrderViewModel mOrderViewModel;
+    private TextView empty_history_textview;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_list);
+
+        empty_history_textview = findViewById(R.id.history_empty_textview);
 
         RecyclerView recyclerView = findViewById(R.id.orderListRecyclerView);
         final OrderListAdapter adapter = new OrderListAdapter(new OrderListAdapter.OrderDiff());
@@ -30,6 +36,9 @@ public class OrderHistoryList extends AppCompatActivity {
         mOrderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
         mOrderViewModel.getAllOrders().observe(this, order -> {
             // Update the cached copy of the words in the adapter.
+            if (!order.isEmpty()) {
+                empty_history_textview.setVisibility(View.INVISIBLE);
+            }
             adapter.submitList(order);
         });
 
