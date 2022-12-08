@@ -20,6 +20,6 @@ public interface FoodSectionDao {
     @Query("DELETE FROM food_section_table")
     void deleteAll();
 
-    @Query("SELECT * FROM food_section_table ORDER BY food_section_name ASC")
+    @Query("SELECT * FROM food_section_table")
     LiveData<List<FoodSection>> getFoodSections();
 }

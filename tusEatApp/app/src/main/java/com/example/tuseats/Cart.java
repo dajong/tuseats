@@ -19,8 +19,8 @@ import com.example.tuseats.Adapter.CartListAdapter;
 import com.google.gson.Gson;
 
 public class Cart extends AppCompatActivity {
-    private Button checkout_button;
-    private TextView cart_empty_text;
+    private static Button checkout_button;
+    private static TextView cart_empty_text;
     SharedPreferences mPrefs;
 
     @Override
@@ -39,7 +39,7 @@ public class Cart extends AppCompatActivity {
         cart_empty_text = findViewById(R.id.cart_empty_textview);
 
         RecyclerView recyclerView = findViewById(R.id.cart_recycler_view);
-        final CartListAdapter adapter = new CartListAdapter(new CartListAdapter.CartDiff());
+        final CartListAdapter adapter = new CartListAdapter(new CartListAdapter.CartDiff(), this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.submitList(DataStore.getCart().cart);
@@ -89,5 +89,10 @@ public class Cart extends AppCompatActivity {
         String json = gson.toJson(DataStore.getCart());
         prefsEditor.putString("cart", json);
         prefsEditor.commit();
+    }
+
+    public static void setCart_empty_text() {
+        checkout_button.setVisibility(View.INVISIBLE);
+        cart_empty_text.setVisibility(View.VISIBLE);
     }
 }

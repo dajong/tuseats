@@ -90,6 +90,8 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
                     InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(view.getContext().INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
+
+                    quantity.setText("0");
                 }
                 break;
             default:
