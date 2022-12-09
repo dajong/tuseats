@@ -17,11 +17,14 @@ import com.example.tuseats.R;
 import com.example.tuseats.model.CartItem;
 import com.example.tuseats.model.Food;
 import com.example.tuseats.utils.ClickListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private TextView foodName;
     private TextView foodDescription;
     private TextView foodPrice;
+    private TextView quantityTextView;
 
     private Button btn_add_to_cart;
 
@@ -35,6 +38,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         foodName = itemView.findViewById(R.id.foodName);
         foodDescription = itemView.findViewById(R.id.foodDescription);
         foodPrice = itemView.findViewById(R.id.foodPrice);
+        quantityTextView = itemView.findViewById(R.id.quantity_textview);
 
         // buttons
         btn_add_to_cart = itemView.findViewById(R.id.btn_add_to_cart);
@@ -44,6 +48,12 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
         this.clickListener = clickListener;
         quantity = itemView.findViewById(R.id.quantity);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            quantityTextView.setVisibility(View.INVISIBLE);
+            quantity.setVisibility(View.INVISIBLE);
+            btn_add_to_cart.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void bind(Food food) {

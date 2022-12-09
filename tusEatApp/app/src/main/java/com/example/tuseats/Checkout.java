@@ -38,8 +38,8 @@ public class Checkout extends AppCompatActivity {
     private EditText card_name;
     private EditText card_cvc;
     private EditText card_address;
-    private EditText card_city;
-    private EditText card_postcode;
+    private Spinner pickupTime;
+    private EditText order_notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +53,10 @@ public class Checkout extends AppCompatActivity {
         card_name = findViewById(R.id.card_name);
         card_cvc = findViewById(R.id.card_cvc);
         card_address = findViewById(R.id.card_address);
-        card_city = findViewById(R.id.card_city);
-        card_postcode = findViewById(R.id.card_postcode);
+        pickupTime = findViewById(R.id.pickupTime);
+        order_notes = findViewById(R.id.order_notes);
 
+        String[] pickupTimeOption = new String[]{"Pickup Time", "12:00 pm", "12:30 pm", "13:00 pm"};
         String[] months = new String[]{"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         String[] years = new String[]{"YY", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33"};
 
@@ -64,6 +65,9 @@ public class Checkout extends AppCompatActivity {
 
         ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, years);
         year.setAdapter(adapter_year);
+
+        ArrayAdapter<String> adapter_pickup_time = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pickupTimeOption);
+        pickupTime.setAdapter(adapter_pickup_time);
 
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -171,23 +175,24 @@ public class Checkout extends AppCompatActivity {
         Double totalPriceOrdered = 0.0;
         List<Food> foodOrdered = new ArrayList<>();
         Intent intent = new Intent(Checkout.this, MainActivity.class);
-
-        if (month == null || month.getSelectedItem().toString() == "MM" || year == null || year.getSelectedItem().toString() == "YY") {
-            // A toast for error
+        if (pickupTime == null || pickupTime.getSelectedItem().toString() == "Pickup Time") {
             Context context = getApplicationContext();
-            Toast.makeText(context, "Error occurred", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please pick a time to pick up your food! ", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(card_number.getText())) {
             card_number.setError("Card Number is required!");
         } else if (TextUtils.isEmpty(card_name.getText())) {
             card_name.setError("Name is required!");
+        } else if (month == null || month.getSelectedItem().toString() == "MM") {
+            // A toast for error
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Expire month is required", Toast.LENGTH_SHORT).show();
+        } else if (year == null || year.getSelectedItem().toString() == "YY") {
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Expire year is required!", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(card_cvc.getText())) {
             card_cvc.setError("CVC is required!");
         } else if (TextUtils.isEmpty(card_address.getText())) {
             card_address.setError("Address is required!");
-        } else if (TextUtils.isEmpty(card_city.getText())) {
-            card_city.setError("City is required!");
-        } else if (TextUtils.isEmpty(card_postcode.getText())) {
-            card_postcode.setError("Postcode is required!");
         } else {
             for (CartItem item : DataStore.getCart().cart) {
                 totalPriceOrdered += item.getFood().getPrice() * item.getQuantity();

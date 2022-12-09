@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,9 @@ import com.example.tuseats.Adapter.FoodSectionListAdapter;
 import com.example.tuseats.model.Order;
 import com.example.tuseats.viewModel.FoodSectionViewModel;
 import com.example.tuseats.viewModel.OrderViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FoodSectionViewModel mFoodSectionViewModel;
     private OrderViewModel mOrderViewModel;
+    private FloatingActionButton button_cart;
     ArrayList<Integer> imageIDs = new ArrayList<>();
 
 
@@ -68,6 +73,20 @@ public class MainActivity extends AppCompatActivity {
             adapter.submitList(foodSections);
         });
 
+        button_cart = findViewById(R.id.fab);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            button_cart.setVisibility(View.INVISIBLE);
+        } else {
+            button_cart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent_cart = new Intent(MainActivity.this, Cart.class);
+                    startActivity(intent_cart);
+                }
+            });
+        }
+
+
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         actionBar.setTitle("TUSeats");
@@ -77,8 +96,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.main_menu, menu);
+        } else {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.main_menu_guest, menu);
+        }
         return true;
     }
 
@@ -96,13 +121,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_maps);
                 return true;
 
-            case R.id.menu_cart:
-                Intent intent_cart = new Intent(MainActivity.this, Cart.class);
-                startActivity(intent_cart);
-                return true;
             case R.id.menu_history:
                 Intent intent_order_history = new Intent(MainActivity.this, OrderHistoryList.class);
                 startActivity(intent_order_history);
+                return true;
+
+            case R.id.menu_login:
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    FirebaseAuth.getInstance().signOut();
+                    finish();
+                    startActivity(getIntent());
+                } else {
+                    Intent intent_order_login = new Intent(MainActivity.this, Login.class);
+                    startActivity(intent_order_login);
+                }
+                return true;
+
+
+            case R.id.menu_logout:
+                user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    FirebaseAuth.getInstance().signOut();
+                    finish();
+                    startActivity(getIntent());
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

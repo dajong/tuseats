@@ -1,0 +1,15 @@
+
+f	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®çµÀ
+f
+java:S1301E"KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ
+|
+java:S3008"ZRename this field "checkout_button" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹®›ÿÿÿÿÿ8—Á¯›Ï0
+w
+java:S3008"ZRename this field "cart_empty_text" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âĞ£8Ãß¯›Ï0
+S
+java:S2696&"6Make the enclosing method "static" or remove this set.(†¢Şè8ŸÁ¯›Ï0
+S
+java:S2696'"6Make the enclosing method "static" or remove this set.(×áºõ8Ëß¯›Ï0
+A
+java:S1172O"+Remove this unused method parameter "view".(»‡„
+h	java:S100^"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û›Ùôúÿÿÿÿ

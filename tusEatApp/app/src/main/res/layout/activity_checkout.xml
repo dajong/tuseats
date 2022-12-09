@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Checkout">
 
+
     <TextView
         android:id="@+id/checkout_title"
         android:layout_width="match_parent"
@@ -17,6 +18,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/pickupTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pickup Time"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkout_title" />
+
+    <EditText
+        android:id="@+id/order_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Notes for canteen"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickupTime" />
 
     <EditText
         android:id="@+id/card_number"
@@ -31,7 +56,7 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkout_title" />
+        app:layout_constraintTop_toBottomOf="@+id/order_notes" />
 
     <EditText
         android:id="@+id/card_name"
@@ -112,36 +137,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/year_spinner" />
 
-    <EditText
-        android:id="@+id/card_city"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:autofillHints="name"
-        android:hint="City"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_address" />
-
-    <EditText
-        android:id="@+id/card_postcode"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:autofillHints="name"
-        android:hint="Postcode"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_city" />
-
     <TextView
         android:id="@+id/checkout_total_price"
         android:layout_width="match_parent"
@@ -152,6 +147,6 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_postcode" />
+        app:layout_constraintTop_toBottomOf="@+id/card_address" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
