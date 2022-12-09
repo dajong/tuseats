@@ -14,12 +14,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menu_history"
-        android:title="@string/view_history"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/menu_logout"
-        android:title="Logout"
+        android:id="@+id/menu_login"
+        android:title="Login"
         app:showAsAction="never" />
 </menu>

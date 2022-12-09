@@ -49,7 +49,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback {
         inflater.inflate(R.menu.general_menu, menu);
         return true;
     }
-
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection

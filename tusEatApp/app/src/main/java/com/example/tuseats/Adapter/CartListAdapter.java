@@ -1,5 +1,6 @@
 package com.example.tuseats.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,17 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tuseats.Cart;
 import com.example.tuseats.DataStore;
 import com.example.tuseats.R;
 import com.example.tuseats.model.CartItem;
 
 public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartViewHolder> {
-    public CartListAdapter(@NonNull DiffUtil.ItemCallback<CartItem> diffCallback) {
+    private Context mActivityContext;
+
+    public CartListAdapter(@NonNull DiffUtil.ItemCallback<CartItem> diffCallback, Context context) {
         super(diffCallback);
+        this.mActivityContext = context;
     }
 
     @NonNull
@@ -51,6 +56,8 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
         private TextView foodName;
         private TextView totalPrice;
         private TextView cart_item_quantity;
+        private TextView cart_empty_text;
+        private Button checkout_button;
         private Button btn_remove_from_cart;
 
 
@@ -60,6 +67,8 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
             totalPrice = itemView.findViewById(R.id.totalPrice);
             btn_remove_from_cart = itemView.findViewById(R.id.btn_remove_from_cart);
             cart_item_quantity = itemView.findViewById(R.id.cart_item_quantity);
+            cart_empty_text = itemView.findViewById(R.id.cart_empty_textview);
+            checkout_button = itemView.findViewById(R.id.checkout_button);
 
             btn_remove_from_cart.setOnClickListener(this);
         }
@@ -83,6 +92,9 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
             DataStore.getCart().cart.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, DataStore.getCart().cart.size());
+            if (DataStore.getCart().cart.isEmpty()) {
+                Cart.setCart_empty_text();
+            }
         }
     }
 }

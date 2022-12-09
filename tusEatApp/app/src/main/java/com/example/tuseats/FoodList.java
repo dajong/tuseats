@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -15,10 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.FoodListAdapter;
 import com.example.tuseats.viewModel.FoodViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class FoodList extends AppCompatActivity {
     private FoodViewModel mFoodViewModel;
     private TextView foodSectionTitle;
+    private FloatingActionButton button_cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,21 @@ public class FoodList extends AppCompatActivity {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(foods);
         });
+
+        // cart button
+        button_cart = findViewById(R.id.fab);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            button_cart.setVisibility(View.INVISIBLE);
+        } else {
+            button_cart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent_cart = new Intent(FoodList.this, Cart.class);
+                    startActivity(intent_cart);
+                }
+            });
+        }
+
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         actionBar.setTitle("TUSeats");
@@ -50,7 +69,7 @@ public class FoodList extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.food_list_menu, menu);
+        inflater.inflate(R.menu.general_menu, menu);
         return true;
     }
 
@@ -63,10 +82,6 @@ public class FoodList extends AppCompatActivity {
                 startActivity(intent_home);
                 return true;
 
-            case R.id.menu_cart:
-                Intent intent_cart = new Intent(FoodList.this, Cart.class);
-                startActivity(intent_cart);
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
