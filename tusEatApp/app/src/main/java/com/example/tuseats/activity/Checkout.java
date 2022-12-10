@@ -1,20 +1,34 @@
-package com.example.tuseats;
+package com.example.tuseats.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Info extends AppCompatActivity {
+import com.example.tuseats.R;
+
+public class Checkout extends AppCompatActivity {
+    private Spinner month;
+    private Spinner year;
+    private TextView totalPrice;
+    private EditText card_number;
+    private EditText card_name;
+    private EditText card_cvc;
+    private EditText card_address;
+    private Spinner pickupTime;
+    private EditText order_notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_checkout);
 
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -35,12 +49,11 @@ public class Info extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_home:
-                Intent intent_home = new Intent(Info.this, MainActivity.class);
+                Intent intent_home = new Intent(Checkout.this, MainActivity.class);
                 startActivity(intent_home);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

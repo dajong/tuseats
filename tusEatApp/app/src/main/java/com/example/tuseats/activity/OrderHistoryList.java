@@ -1,4 +1,4 @@
-package com.example.tuseats;
+package com.example.tuseats.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.OrderListAdapter;
+import com.example.tuseats.R;
 import com.example.tuseats.viewModel.OrderViewModel;
 
 public class OrderHistoryList extends AppCompatActivity {

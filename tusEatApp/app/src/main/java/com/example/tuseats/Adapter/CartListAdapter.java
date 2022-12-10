@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tuseats.Cart;
-import com.example.tuseats.DataStore;
+import com.example.tuseats.utils.DataStore;
 import com.example.tuseats.R;
+import com.example.tuseats.activity.Cart;
 import com.example.tuseats.model.CartItem;
 
 public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartViewHolder> {

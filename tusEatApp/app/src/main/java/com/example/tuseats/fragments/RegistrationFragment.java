@@ -1,22 +1,22 @@
-package com.example.tuseats;
+package com.example.tuseats.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import com.example.tuseats.R;
+import com.example.tuseats.activity.Login;
 import com.example.tuseats.utils.KeyboardUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,61 +24,83 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Registration extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link RegistrationFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class RegistrationFragment extends Fragment {
 
     private EditText email_register, password_register;
     private Button button_register;
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public RegistrationFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment RegistrationFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static RegistrationFragment newInstance(String param1, String param2) {
+        RegistrationFragment fragment = new RegistrationFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_registration, container, false);
         // taking FirebaseAuth instance
         mAuth = FirebaseAuth.getInstance();
 
-        email_register = findViewById(R.id.email_register_edit_text);
-        password_register = findViewById(R.id.password_register_edit_text);
-        button_register = findViewById(R.id.button_register);
-        progressbar = findViewById(R.id.progressbar);
+        email_register = view.findViewById(R.id.email_register_edit_text);
+        password_register = view.findViewById(R.id.password_register_edit_text);
+        button_register = view.findViewById(R.id.button_register);
+        progressbar = view.findViewById(R.id.progressbar);
 
         // Set on Click Listener on Registration button
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                KeyboardUtils.hideSoftKeyboard(Registration.this);
+                KeyboardUtils.hideSoftKeyboard(getActivity());
                 registerNewUser();
             }
         });
 
-        ActionBar actionBar = getSupportActionBar();
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        actionBar.setTitle("TUSeats");
-        getSupportActionBar().setIcon(R.drawable.ic_baseline_food_bank_24);
+        return view;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.general_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.menu_home:
-                Intent intent_home = new Intent(Registration.this, MainActivity.class);
-                startActivity(intent_home);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void registerNewUser() {
         // Take the value of two edit texts in Strings
@@ -107,18 +129,18 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(),
+                    Toast.makeText(getContext(),
                                     "Registration successful!",
                                     Toast.LENGTH_LONG)
                             .show();
 
                     // if the user created intent to login activity
-                    Intent intent = new Intent(Registration.this, Login.class);
+                    Intent intent = new Intent(getActivity(), Login.class);
                     startActivity(intent);
                 } else {
                     Log.e("Error", task.getException().toString());
                     // Registration failed
-                    Toast.makeText(getApplicationContext(),
+                    Toast.makeText(getContext(),
                             "Registration failed! Please try again later",
                             Toast.LENGTH_LONG).show();
                 }

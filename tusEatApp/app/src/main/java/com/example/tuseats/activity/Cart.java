@@ -1,4 +1,4 @@
-package com.example.tuseats;
+package com.example.tuseats.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.CartListAdapter;
+import com.example.tuseats.R;
+import com.example.tuseats.utils.DataStore;
 import com.google.gson.Gson;
 
 public class Cart extends AppCompatActivity {

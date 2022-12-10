@@ -1,9 +1,0 @@
-
-k	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Цµ»ђш€€€€
-f
-java:S1301>"KReplace this "switch" statement by "if" statements to increase readability.(шеі°€€€€€
-{	java:S116"aRename this field "empty_history_textview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Иƒ£мы€€€€
-А
-java:S1450"eRemove the "empty_history_textview" field and declare it as a local variable in the relevant methods.(Иƒ£мы€€€€
-t
-java:S1450"^Remove the "mOrderViewModel" field and declare it as a local variable in the relevant methods.(йћ”ъ

@@ -1,4 +1,4 @@
-package com.example.tuseats;
+package com.example.tuseats.utils;
 
 import com.example.tuseats.model.CartItem;
 

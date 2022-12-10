@@ -1,4 +1,4 @@
-package com.example.tuseats;
+package com.example.tuseats.activity;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.FoodSectionListAdapter;
+import com.example.tuseats.R;
 import com.example.tuseats.model.Order;
+import com.example.tuseats.utils.DataStore;
 import com.example.tuseats.viewModel.FoodSectionViewModel;
 import com.example.tuseats.viewModel.OrderViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

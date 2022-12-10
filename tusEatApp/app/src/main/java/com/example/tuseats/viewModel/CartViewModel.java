@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.tuseats.DataStore;
+import com.example.tuseats.utils.DataStore;
 import com.example.tuseats.model.CartItem;
 
 import java.util.List;

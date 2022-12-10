@@ -21,6 +21,10 @@
         <!--        Photo by Karolina Grabowska: https://www.pexels.com/photo/set-of-identical-bottles-of-coke-on-white-surface-4397806/-->
         <item>@drawable/img_drinks</item>
     </array>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
