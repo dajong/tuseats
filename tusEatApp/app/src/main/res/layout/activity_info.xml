@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Info">
+    tools:context=".activity.Info">
 
     <TextView
         android:id="@+id/opening_hours_title"

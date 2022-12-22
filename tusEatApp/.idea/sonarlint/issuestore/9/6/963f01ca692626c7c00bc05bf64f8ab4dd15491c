@@ -1,0 +1,33 @@
+
+J
+java:S1604Z"(Make this anonymous inner class a lambda(Ó´Ÿøÿÿÿÿ8á¢ÍİÏ0
+J
+java:S1604a"(Make this anonymous inner class a lambda(ä¬ö¾ÿÿÿÿÿ8è¢ÍİÏ0
+E
+java:S1604"(Make this anonymous inner class a lambda(³Ö×•8é±ÏİÏ0
+r	java:S116"VRename this field "email_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á»ğà8Õ¸ÊİÏ0
+u	java:S116"YRename this field "password_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á»ğà8Õ¸ÊİÏ0
+r	java:S116 "VRename this field "signup_link" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍêÔ¥8Õ¸ÊİÏ0
+u	java:S116!"TRename this field "btn_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºšŒéûÿÿÿÿ8Õ¸ÊİÏ0
+I
+java:S1659",Declare "password_login" on a separate line.(Á»ğà8Ø¸ÊİÏ0
+z
+java:S1450!"XRemove the "btn_login" field and declare it as a local variable in the relevant methods.(ºšŒéûÿÿÿÿ8õ¢ÍİÏ0
+l
+java:S1450*"VRemove the "mParam1" field and declare it as a local variable in the relevant methods.(•Íï‘
+l
+java:S1450+"VRemove the "mParam2" field and declare it as a local variable in the relevant methods.(¡ˆ€ 
+w
+java:S1450 "ZRemove the "signup_link" field and declare it as a local variable in the relevant methods.(ÍêÔ¥8õ¢ÍİÏ0
+M
+java:S1135$"2Complete the task associated to this TODO comment.(ÜûŠ—øÿÿÿÿ
+M
+java:S1135)"2Complete the task associated to this TODO comment.(ğï¢öúÿÿÿÿ
+M
+java:S11359"2Complete the task associated to this TODO comment.(ßíŠÿÿÿÿÿ
+C
+java:S1659n"&Declare "password" on a separate line.(û‚¼õ8†²ÏİÏ0
+A
+java:S1068*"+Remove this unused "mParam1" private field.(•Íï‘
+A
+java:S1068+"+Remove this unused "mParam2" private field.(¡ˆ€ 

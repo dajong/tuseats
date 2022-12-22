@@ -13,28 +13,28 @@
         android:theme="@style/Theme.Tuseats"
         tools:targetApi="31">
         <activity
-            android:name=".Login"
+            android:name=".activity.Login"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Registration"
+            android:name=".activity.Registration"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Info"
+            android:name=".activity.Info"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrderHistoryList"
+            android:name=".activity.OrderHistoryList"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -56,35 +56,35 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".Cart"
+            android:name=".activity.Cart"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Maps"
+            android:name=".activity.Maps"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Checkout"
+            android:name=".activity.Checkout"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FoodList"
+            android:name=".activity.FoodList"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

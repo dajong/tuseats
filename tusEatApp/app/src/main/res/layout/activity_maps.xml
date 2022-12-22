@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Maps">
+    tools:context=".activity.Maps">
 
     <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_map_container_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:name="com.example.tuseats.MapsFragment"
+        android:name="com.example.tuseats.fragments.MapsFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

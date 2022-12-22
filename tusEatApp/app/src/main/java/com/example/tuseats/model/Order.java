@@ -11,11 +11,12 @@ import java.util.List;
 
 @Entity(tableName = "order_table")
 public class Order implements Serializable {
-    public Order(@NonNull Integer orderId, @NonNull String dateOrdered, @NonNull Double totalPrice, @NonNull List<Food> foodOrdered) {
+    public Order(@NonNull Integer orderId, @NonNull String dateOrdered, @NonNull Double totalPrice, @NonNull List<Food> foodOrdered, String notes) {
         this.orderId = orderId;
         this.dateOrdered = dateOrdered;
         this.totalPrice = totalPrice;
         this.foodOrdered = foodOrdered;
+        this.notes = notes;
     }
 
     @NonNull
@@ -54,6 +55,14 @@ public class Order implements Serializable {
         this.foodOrdered = foodOrdered;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "order_id")
@@ -71,5 +80,8 @@ public class Order implements Serializable {
     @NonNull
     @ColumnInfo(name = "order_food")
     private List<Food> foodOrdered;
+
+    @ColumnInfo(name = "order_notes")
+    private String notes;
 
 }

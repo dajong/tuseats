@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tuseats.DataStore;
+import com.example.tuseats.utils.DataStore;
 import com.example.tuseats.R;
 import com.example.tuseats.model.CartItem;
 import com.example.tuseats.model.Food;
