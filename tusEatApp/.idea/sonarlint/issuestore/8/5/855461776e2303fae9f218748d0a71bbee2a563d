@@ -1,0 +1,23 @@
+
+Œ
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¢©õ¸ÿÿÿÿÿ
+r	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—¨ê´şÿÿÿÿ8ï‡¶ºÏ0
+r	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìŞÀıÿÿÿÿ8ï‡¶ºÏ0
+m	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°”íÜ8ï‡¶ºÏ0
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä­Æïÿÿÿÿÿ8ï‡¶ºÏ0
+n	java:S117Š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÍòš8ï‡¶ºÏ0
+E
+java:S1604R"(Make this anonymous inner class a lambda(îâÏ–8ï‡¶ºÏ0
+
+java:S1488Ã"eImmediately return this expression instead of assigning it to the temporary variable "notifyBuilder".(®ĞÄıÿÿÿÿ
+r	java:S116("VRename this field "button_cart" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†„Ó‚8‹ˆ¶ºÏ0
+w
+java:S1450("ZRemove the "button_cart" field and declare it as a local variable in the relevant methods.(†„Ó‚8ˆ¶ºÏ0
+
+java:S1450&"dRemove the "mFoodSectionViewModel" field and declare it as a local variable in the relevant methods.(¥àáª8ˆ¶ºÏ0
+{
+java:S1450'"^Remove the "mOrderViewModel" field and declare it as a local variable in the relevant methods.(éÌÓú8ˆ¶ºÏ0
+N
+java:S1602I",Remove useless curly braces around statement(‘é»›ıÿÿÿÿ8”ˆ¶ºÏ0
+2
+java:S3626Í"Remove this redundant jump.(ûÁİ…

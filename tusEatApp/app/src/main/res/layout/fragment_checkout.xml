@@ -25,29 +25,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/pickupTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Pickup Time"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/checkout_title" />
-
         <EditText
             android:id="@+id/order_notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Notes for canteen"
+            android:hint="Notes for canteen (optional)"
             android:inputType="textMultiLine"
+            android:minLines="3"
             android:maxLines="3"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pickupTime" />
+            app:layout_constraintTop_toBottomOf="@id/checkout_title" />
 
         <EditText
             android:id="@+id/card_number"

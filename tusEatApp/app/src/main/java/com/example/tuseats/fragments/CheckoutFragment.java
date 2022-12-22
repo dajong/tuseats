@@ -45,7 +45,6 @@ public class CheckoutFragment extends Fragment {
     private EditText card_name;
     private EditText card_cvc;
     private EditText card_address;
-    private Spinner pickupTime;
     private EditText order_notes;
     private Button button_complete_payment;
 
@@ -102,11 +101,9 @@ public class CheckoutFragment extends Fragment {
         card_name = view.findViewById(R.id.card_name);
         card_cvc = view.findViewById(R.id.card_cvc);
         card_address = view.findViewById(R.id.card_address);
-        pickupTime = view.findViewById(R.id.pickupTime);
         order_notes = view.findViewById(R.id.order_notes);
         button_complete_payment = view.findViewById(R.id.complete_payment_button);
 
-        String[] pickupTimeOption = new String[]{"Pickup Time", "12:00 pm", "12:30 pm", "13:00 pm"};
         String[] months = new String[]{"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         String[] years = new String[]{"YY", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33"};
 
@@ -116,9 +113,7 @@ public class CheckoutFragment extends Fragment {
         ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, years);
         year.setAdapter(adapter_year);
 
-        ArrayAdapter<String> adapter_pickup_time = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, pickupTimeOption);
-        pickupTime.setAdapter(adapter_pickup_time);
-// Credit card number formatting
+        // Credit card number formatting
         // Code source: https://stackoverflow.com/questions/11790102/format-credit-card-in-edit-text-in-android
 
         card_number.addTextChangedListener(new TextWatcher() {
@@ -207,10 +202,7 @@ public class CheckoutFragment extends Fragment {
         Double totalPriceOrdered = 0.0;
         List<Food> foodOrdered = new ArrayList<>();
         Intent intent = new Intent(getContext(), MainActivity.class);
-        if (pickupTime == null || pickupTime.getSelectedItem().toString() == "Pickup Time") {
-            Context context = getContext();
-            Toast.makeText(context, "Please pick a time to pick up your food! ", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(card_number.getText())) {
+        if (TextUtils.isEmpty(card_number.getText())) {
             card_number.setError("Card Number is required!");
         } else if (TextUtils.isEmpty(card_name.getText())) {
             card_name.setError("Name is required!");
@@ -236,8 +228,13 @@ public class CheckoutFragment extends Fragment {
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
             String formattedDate = df.format(c);
+            Order newOrder;
+            if (order_notes.getText().toString() == "") {
+                newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered, "");
 
-            Order newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered);
+            } else {
+                newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered, order_notes.getText().toString());
+            }
 
             intent.putExtra("order", newOrder);
             startActivity(intent);
