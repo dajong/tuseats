@@ -1,0 +1,10 @@
+
+i
+java:S1192F"GDefine a constant instead of duplicating this literal "Drinks" 3 times.(ÚÃò÷øÿÿÿÿ8¼Ù¼˜Î0
+i
+java:S1192@"LDefine a constant instead of duplicating this literal "Main Course" 3 times.(ç­Éñ8ÁË·æÍ0
+i	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‚ìúñ8ÂË·æÍ0
+o
+java:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É¯ğ8ÈË·æÍ0
+s
+java:S3077"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(É¯ğ8ÊË·æÍ0
