@@ -1,27 +1,0 @@
-
-f	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óúú¡
->
-java:S1604c"(Make this anonymous inner class a lambda(îâÏ–
-k	java:S116"VRename this field "button_cart" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†„Ó‚
-p
-java:S1450"ZRemove the "button_cart" field and declare it as a local variable in the relevant methods.(†„Ó‚
-z
-java:S1450"_Remove the "foodSectionTitle" field and declare it as a local variable in the relevant methods.(Şµù’ıÿÿÿÿ
-s
-java:S1450"]Remove the "mFoodViewModel" field and declare it as a local variable in the relevant methods.(¤¹
-l
-java:S1450'"VRemove the "mParam1" field and declare it as a local variable in the relevant methods.(•Íï‘
-l
-java:S1450("VRemove the "mParam2" field and declare it as a local variable in the relevant methods.(¡ˆ€ 
-M
-java:S1135!"2Complete the task associated to this TODO comment.(ÜûŠ—øÿÿÿÿ
-M
-java:S1135&"2Complete the task associated to this TODO comment.(ğï¢öúÿÿÿÿ
-M
-java:S11356"2Complete the task associated to this TODO comment.(ßíŠÿÿÿÿÿ
-G
-java:S1602Y",Remove useless curly braces around statement(–®™ìúÿÿÿÿ
-A
-java:S1068'"+Remove this unused "mParam1" private field.(•Íï‘
-A
-java:S1068("+Remove this unused "mParam2" private field.(¡ˆ€ 

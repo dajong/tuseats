@@ -8,16 +8,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.FoodListAdapter;
 import com.example.tuseats.R;
 import com.example.tuseats.activity.Cart;
-import com.example.tuseats.viewModel.FoodViewModel;
+import com.example.tuseats.model.Food;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,9 +28,10 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class FoodListFragment extends Fragment {
 
-    private FoodViewModel mFoodViewModel;
+    private FoodListAdapter adapter;
     private TextView foodSectionTitle;
     private FloatingActionButton button_cart;
+    DatabaseReference mbase; // Create object of the Firebase Realtime Database
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,6 +76,9 @@ public class FoodListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Create a instance of the database and get
+        // its reference
+        mbase = FirebaseDatabase.getInstance().getReference();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food_list, container, false);
         //Setting the food section title
@@ -82,15 +88,15 @@ public class FoodListFragment extends Fragment {
         foodSectionTitle.setText(title);
 
         RecyclerView recyclerView = view.findViewById(R.id.foodListRecyclerView);
-        final FoodListAdapter adapter = new FoodListAdapter(new FoodListAdapter.FoodDiff());
+        FirebaseRecyclerOptions<Food> options
+                = new FirebaseRecyclerOptions.Builder<Food>()
+                .setQuery(mbase, Food.class)
+                .build();
+
+        adapter = new FoodListAdapter(options);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mFoodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        mFoodViewModel.getAllFoodsByFoodSection(title).observe(getActivity(), foods -> {
-            // Update the cached copy of the words in the adapter.
-            adapter.submitList(foods);
-        });
-
+        
         // cart button
         button_cart = view.findViewById(R.id.fab);
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
@@ -105,5 +111,17 @@ public class FoodListFragment extends Fragment {
             });
         }
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
