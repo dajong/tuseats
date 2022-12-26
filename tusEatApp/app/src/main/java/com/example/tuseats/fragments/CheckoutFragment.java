@@ -1,11 +1,15 @@
 package com.example.tuseats.fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,21 +20,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.tuseats.R;
 import com.example.tuseats.activity.MainActivity;
 import com.example.tuseats.model.CartItem;
-import com.example.tuseats.model.Food;
-import com.example.tuseats.model.Order;
 import com.example.tuseats.utils.DataStore;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,6 +54,8 @@ public class CheckoutFragment extends Fragment {
     private EditText card_address;
     private EditText order_notes;
     private Button button_complete_payment;
+    SharedPreferences mPrefs;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,6 +101,7 @@ public class CheckoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        mPrefs = getActivity().getSharedPreferences("cart_values", MODE_PRIVATE);
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
 
         month = view.findViewById(R.id.month_spinner);
@@ -200,8 +210,9 @@ public class CheckoutFragment extends Fragment {
 
     public void completePayment() {
         Double totalPriceOrdered = 0.0;
-        List<Food> foodOrdered = new ArrayList<>();
+        Map<String, Integer> foodOrdered = new HashMap<>();
         Intent intent = new Intent(getContext(), MainActivity.class);
+
         if (TextUtils.isEmpty(card_number.getText())) {
             card_number.setError("Card Number is required!");
         } else if (TextUtils.isEmpty(card_name.getText())) {
@@ -220,23 +231,37 @@ public class CheckoutFragment extends Fragment {
         } else {
             for (CartItem item : DataStore.getCart().cart) {
                 totalPriceOrdered += item.getFood().getPrice() * item.getQuantity();
-                foodOrdered.add(item.getFood());
+                foodOrdered.put(item.getFood().getName(), item.getQuantity());
             }
             DataStore.getCart().cart.clear();
+            mPrefs.edit().clear().commit();
             Date c = Calendar.getInstance().getTime();
-
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
             String formattedDate = df.format(c);
-            Order newOrder;
-            if (order_notes.getText().toString() == "") {
-                newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered, "");
+            Map<String, Object> order = new HashMap<>();
+            String currentUser = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            order.put("dateOrdered", formattedDate);
+            order.put("userOrdered", currentUser);
+            order.put("priceOrdered", totalPriceOrdered);
+            order.put("foodOrdered", foodOrdered);
+            order.put("orderNotes", order_notes.getText().toString());
+            order.put("foodReady", false);
 
-            } else {
-                newOrder = new Order(0, formattedDate, totalPriceOrdered, foodOrdered, order_notes.getText().toString());
-            }
-
-            intent.putExtra("order", newOrder);
+            db.collection("orders").document()
+                    .set(order)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("adding_to_db", "DocumentSnapshot successfully written!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("adding_to_db", "Error writing document", e);
+                        }
+                    });
             startActivity(intent);
         }
     }

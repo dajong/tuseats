@@ -1,6 +1,0 @@
-
-f
-java:S1104"PMake cart a static final constant or non-public and provide accessors if needed.(«¬ä•
-p
-java:S1104"ZMake welcome_notify a static final constant or non-public and provide accessors if needed.(Ã†§ž
-n	java:S116"YRename this field "welcome_notify" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã†§ž

@@ -5,43 +5,39 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.OrderListAdapter;
 import com.example.tuseats.R;
-import com.example.tuseats.viewModel.OrderViewModel;
+import com.example.tuseats.model.Order;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class OrderHistoryList extends AppCompatActivity {
-    private OrderViewModel mOrderViewModel;
-    private TextView empty_history_textview;
+    OrderListAdapter adapter;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_list);
-
-        empty_history_textview = findViewById(R.id.history_empty_textview);
-
+        
         RecyclerView recyclerView = findViewById(R.id.orderListRecyclerView);
-        final OrderListAdapter adapter = new OrderListAdapter(new OrderListAdapter.OrderDiff());
+
+        String curUser = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Query query = FirebaseFirestore.getInstance().collection("orders").whereEqualTo("userOrdered", curUser).limit(10);
+        FirestoreRecyclerOptions<Order> options = new FirestoreRecyclerOptions.Builder<Order>().setQuery(query, Order.class).build();
+
+
+        adapter = new OrderListAdapter(options);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mOrderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
-        mOrderViewModel.getAllOrders().observe(this, order -> {
-            // Update the cached copy of the words in the adapter.
-            if (!order.isEmpty()) {
-                empty_history_textview.setVisibility(View.INVISIBLE);
-            }
-            adapter.submitList(order);
-        });
 
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -68,5 +64,17 @@ public class OrderHistoryList extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
