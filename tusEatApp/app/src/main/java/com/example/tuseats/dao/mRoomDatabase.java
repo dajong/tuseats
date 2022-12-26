@@ -12,19 +12,16 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.tuseats.model.DataConverter;
 import com.example.tuseats.model.Food;
 import com.example.tuseats.model.FoodSection;
-import com.example.tuseats.model.Order;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Food.class, FoodSection.class, Order.class}, version = 1, exportSchema = false)
+@Database(entities = {Food.class, FoodSection.class}, version = 1, exportSchema = false)
 @TypeConverters(DataConverter.class)
 public abstract class mRoomDatabase extends RoomDatabase {
     public abstract FoodDao foodDao();
 
     public abstract FoodSectionDao foodSectionDao();
-
-    public abstract OrderDao orderDao();
 
     private static volatile mRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

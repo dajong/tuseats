@@ -3,6 +3,7 @@ package com.example.tuseats.activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,10 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tuseats.Adapter.FoodSectionListAdapter;
 import com.example.tuseats.R;
-import com.example.tuseats.model.Order;
 import com.example.tuseats.utils.DataStore;
 import com.example.tuseats.viewModel.FoodSectionViewModel;
-import com.example.tuseats.viewModel.OrderViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private NotificationManager mNotifyManager;
 
     private FoodSectionViewModel mFoodSectionViewModel;
-    private OrderViewModel mOrderViewModel;
     private FloatingActionButton button_cart;
     ArrayList<Integer> imageIDs = new ArrayList<>();
 
@@ -55,14 +53,6 @@ public class MainActivity extends AppCompatActivity {
             sendNotification();
             DataStore.getCart().welcome_notify = true;
         }
-
-        Intent orderIntent = getIntent();
-        Order newOrder = (Order) orderIntent.getSerializableExtra("order");
-        if (newOrder != null) {
-            mOrderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
-            mOrderViewModel.insert(newOrder);
-        }
-
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         imageIDs = fetchDrawables();
@@ -132,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
                     FirebaseAuth.getInstance().signOut();
+                    DataStore.getCart().cart.clear();
+                    SharedPreferences mPrefs = getSharedPreferences("cart_values", MODE_PRIVATE);
+                    mPrefs.edit().clear().commit();
                     finish();
                     startActivity(getIntent());
                 } else {

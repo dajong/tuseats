@@ -1,87 +1,77 @@
 package com.example.tuseats.model;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
+import java.util.Map;
 
-import java.io.Serializable;
-import java.util.List;
-
-@Entity(tableName = "order_table")
-public class Order implements Serializable {
-    public Order(@NonNull Integer orderId, @NonNull String dateOrdered, @NonNull Double totalPrice, @NonNull List<Food> foodOrdered, String notes) {
-        this.orderId = orderId;
+public class Order {
+    public Order(String dateOrdered, String userOrdered, Double priceOrdered, Map<String, Integer> foodOrdered, String orderNotes, boolean foodReady) {
         this.dateOrdered = dateOrdered;
-        this.totalPrice = totalPrice;
+        this.userOrdered = userOrdered;
+        this.priceOrdered = priceOrdered;
         this.foodOrdered = foodOrdered;
-        this.notes = notes;
+        this.orderNotes = orderNotes;
+        this.foodReady = foodReady;
     }
 
-    @NonNull
-    public Integer getOrderId() {
-        return orderId;
+    public Order() {
     }
 
-    public void setOrderId(@NonNull Integer orderId) {
-        this.orderId = orderId;
-    }
-
-    @NonNull
     public String getDateOrdered() {
         return dateOrdered;
     }
 
-    public void setDateOrdered(@NonNull String dateOrdered) {
+    public void setDateOrdered(String dateOrdered) {
         this.dateOrdered = dateOrdered;
     }
 
-    @NonNull
-    public Double getTotalPrice() {
-        return totalPrice;
+    public String getUserOrdered() {
+        return userOrdered;
     }
 
-    public void setTotalPrice(@NonNull Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setUserOrdered(String userOrdered) {
+        this.userOrdered = userOrdered;
     }
 
-    @NonNull
-    public List<Food> getFoodOrdered() {
+    public Double getPriceOrdered() {
+        return priceOrdered;
+    }
+
+    public void setPriceOrdered(Double priceOrdered) {
+        this.priceOrdered = priceOrdered;
+    }
+
+    public Map<String, Integer> getFoodOrdered() {
         return foodOrdered;
     }
 
-    public void setFoodOrdered(@NonNull List<Food> foodOrdered) {
+    public void setFoodOrdered(Map<String, Integer> foodOrdered) {
         this.foodOrdered = foodOrdered;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getOrderNotes() {
+        return orderNotes;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setOrderNotes(String orderNotes) {
+        this.orderNotes = orderNotes;
     }
 
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    @ColumnInfo(name = "order_id")
-    private Integer orderId;
+    public boolean isFoodReady() {
+        return foodReady;
+    }
 
-    @NonNull
-    @ColumnInfo(name = "order_date")
+    public void setFoodReady(boolean foodReady) {
+        this.foodReady = foodReady;
+    }
+
     private String dateOrdered;
 
-    @NonNull
-    @ColumnInfo(name = "order_price")
-    private Double totalPrice;
+    private String userOrdered;
 
-    @TypeConverters(DataConverter.class)
-    @NonNull
-    @ColumnInfo(name = "order_food")
-    private List<Food> foodOrdered;
+    private Double priceOrdered;
 
-    @ColumnInfo(name = "order_notes")
-    private String notes;
+    private Map<String, Integer> foodOrdered;
 
+    private String orderNotes;
+
+    private boolean foodReady;
 }

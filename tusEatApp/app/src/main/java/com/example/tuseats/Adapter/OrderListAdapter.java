@@ -1,40 +1,64 @@
 package com.example.tuseats.Adapter;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tuseats.ViewHolder.OrderViewHolder;
+import com.example.tuseats.R;
 import com.example.tuseats.model.Order;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class OrderListAdapter extends ListAdapter<Order, OrderViewHolder> {
-    public OrderListAdapter(@NonNull DiffUtil.ItemCallback<Order> diffCallback) {
-        super(diffCallback);
+import java.util.Map;
+
+public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListAdapter.OrderViewHolder> {
+
+
+    /**
+     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
+     * FirestoreRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
+    public OrderListAdapter(@NonNull FirestoreRecyclerOptions options) {
+        super(options);
+    }
+
+    @NonNull
+    @Override
+    public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.order_list_item, parent, false);
+
+        return new OrderViewHolder(view);
     }
 
     @Override
-    public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return OrderViewHolder.create(parent);
-    }
+    protected void onBindViewHolder(@NonNull OrderViewHolder holder, int position, @NonNull Order model) {
+        Map<String, Integer> food_items = model.getFoodOrdered();
 
-    @Override
-    public void onBindViewHolder(OrderViewHolder holder, int position) {
-        Order current = getItem(position);
-        holder.bind(current);
-    }
-
-    public static class OrderDiff extends DiffUtil.ItemCallback<Order> {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull Order oldItem, @NonNull Order newItem) {
-            return oldItem == newItem;
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : food_items.entrySet()) {
+            sb.append(entry.getValue() + " - " + entry.getKey() + "\n");
         }
 
-        @Override
-        public boolean areContentsTheSame(@NonNull Order oldItem, @NonNull Order newItem) {
-            return oldItem.getOrderId().equals(newItem.getOrderId());
+        holder.order_date.setText(model.getDateOrdered());
+        holder.order_total_price.setText("€ " + model.getPriceOrdered());
+        holder.order_items.setText(sb.toString());
+    }
+
+    class OrderViewHolder extends RecyclerView.ViewHolder {
+        TextView order_date, order_total_price, order_items;
+
+        public OrderViewHolder(@NonNull View itemView) {
+            super(itemView);
+            order_date = itemView.findViewById(R.id.order_date);
+            order_total_price = itemView.findViewById(R.id.order_total_price);
+            order_items = itemView.findViewById(R.id.order_items);
         }
     }
 }
