@@ -189,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
                 .setContentText("Try out our student favorite Special Curry today!")
                 .setSmallIcon(R.drawable.ic_baseline_food_bank_24);
         return notifyBuilder;
-
     }
 
     @Override
