@@ -1,0 +1,8 @@
+
+f	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î™©Ñ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÖ¤‚ÿÿÿÿÿ
+o	java:S1167"URename this field "order_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’­²‹øÿÿÿÿ
+v	java:S1167"\Rename this field "order_total_price" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’­²‹øÿÿÿÿ
+p	java:S1167"VRename this field "order_items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’­²‹øÿÿÿÿ
+i
+java:S16597"NDeclare "order_total_price" and all following declarations on a separate line.(’­²‹øÿÿÿÿ

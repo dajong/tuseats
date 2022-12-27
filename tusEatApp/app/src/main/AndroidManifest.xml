@@ -16,6 +16,13 @@
         android:theme="@style/Theme.Tuseats"
         tools:targetApi="31">
         <activity
+            android:name=".Contact"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.Login"
             android:exported="false">
             <meta-data

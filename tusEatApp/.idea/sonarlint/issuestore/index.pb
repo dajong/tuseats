@@ -38,8 +38,6 @@ Bapp/src/main/java/com/example/tuseats/fragments/LoginFragment.java,9/6/963f01c
 p
 @app/src/main/java/com/example/tuseats/activity/Registration.java,7/3/737f90ca2a850278b32a376b47c03726240c75e4
 y
-Iapp/src/main/java/com/example/tuseats/fragments/RegistrationFragment.java,4/2/423abbc3148a08001dcbcc074ed1e716f50bf1aa
-y
 Iapp/src/main/java/com/example/tuseats/Adapter/FoodSectionListAdapter.java,e/2/e232d5d7dda06df83248fc3ed69e8e15f97a892c
 l
 <app/src/main/java/com/example/tuseats/activity/FoodList.java,b/f/bf1163b02ffa70135fc28fcb94c1f3e7b4e5d913
@@ -57,3 +55,11 @@ Bapp/src/main/java/com/example/tuseats/Adapter/FoodListAdapter.java,0/9/093dfe6
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 j
 :app/src/main/java/com/example/tuseats/utils/DataStore.java,a/1/a1fceaa0752716f350c989ace30658a7c96e032f
+q
+Aapp/src/main/java/com/example/tuseats/fragments/MapsFragment.java,6/e/6e9ab98bffb87b30f87e1746cead9fd3cb09f183
+t
+Dapp/src/main/java/com/example/tuseats/activity/OrderHistoryList.java,d/0/d074ab8cdb838a7700f64d6fe6b491264bb5b18c
+s
+Capp/src/main/java/com/example/tuseats/Adapter/OrderListAdapter.java,b/2/b2ddb70a47a3719d6d0ad2e3bf6856c24412cc18
+f
+6app/src/main/java/com/example/tuseats/model/Order.java,c/5/c59496bbab1a34cb8c05b21aff5e8ec1e8376b83
