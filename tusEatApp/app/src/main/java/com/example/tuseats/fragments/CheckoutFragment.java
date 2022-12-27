@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import com.example.tuseats.R;
 import com.example.tuseats.activity.MainActivity;
 import com.example.tuseats.model.CartItem;
+import com.example.tuseats.service.NotificationService;
 import com.example.tuseats.utils.DataStore;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -253,6 +254,7 @@ public class CheckoutFragment extends Fragment {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            getActivity().startService(new Intent(getActivity(), NotificationService.class));
                             Log.d("adding_to_db", "DocumentSnapshot successfully written!");
                         }
                     })
