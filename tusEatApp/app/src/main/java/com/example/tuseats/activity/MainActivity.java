@@ -118,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_order_history);
                 return true;
 
+            case R.id.menu_contact:
+                Intent intent_contact_staff = new Intent(MainActivity.this, Contact.class);
+                startActivity(intent_contact_staff);
+                return true;
+
             case R.id.menu_login:
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {

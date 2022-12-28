@@ -14,6 +14,12 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/menu_contact"
+        android:title="Contact Staff"
+        android:icon="@drawable/ic_call_dark"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_history"
         android:title="@string/view_history"
         app:showAsAction="never" />
